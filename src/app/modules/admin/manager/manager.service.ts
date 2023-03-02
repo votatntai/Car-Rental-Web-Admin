@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, switchMap, take, tap } from 'rxjs';
 import { Manager, ManagerPagination } from './manager.type';
 
 @Injectable({ providedIn: 'root' })
@@ -58,7 +58,44 @@ export class ManagerService {
             tap((response) => {
                 this._pagination.next(response.pagination);
                 this._managers.next(response.data);
-            })
+            }),
         );
+    }
+
+    /**
+     * Get manager by id
+     */
+    getManagerById(id: string): Observable<Manager> {
+        return this.managers$.pipe(
+            take(1),
+            switchMap(() => this._httpClient.get<Manager>('/api/users/' + id).pipe(
+                map((manager) => {
+
+                    // Set value for current manager
+                    this._manager.next(manager);
+
+                    // Return the new contact
+                    return manager;
+                })
+            ))
+        );
+    }
+
+    /**
+ * Get manager by id
+ */
+    updateManagerStatus(id: string, status: boolean) {
+        return this.managers$.pipe(
+            take(1),
+            switchMap(() => this._httpClient.put<Manager>('/api/users/' + id, { status: status }).pipe(
+                map((updatedManager) => {
+
+                    // Update current manager
+                    this._manager.next(updatedManager);
+
+                    return updatedManager;
+                })
+            ))
+        )
     }
 }

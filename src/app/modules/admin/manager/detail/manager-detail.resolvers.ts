@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
-import { ManagerService } from './manager.service';
-import { Manager, ManagerPagination } from './manager.type';
+import { ManagerService } from '../manager.service';
+import { Manager } from '../manager.type';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class ManagersResolver implements Resolve<any>
+export class ManagerDetailResolver implements Resolve<any>
 {
     /**
      * Constructor
@@ -26,7 +26,7 @@ export class ManagersResolver implements Resolve<any>
      * @param route
      * @param state
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{ pagination: ManagerPagination; data: Manager[] }> {
-        return this._managerService.getManagers();
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Manager> {
+        return this._managerService.getManagerById(route.paramMap.get('id'));
     }
 }

@@ -13,28 +13,28 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 id: 'accounts.managers',
                 title: 'Manager',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
                 title: 'Car Owner',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
                 title: 'Drivers',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
                 title: 'Customers',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
             },
         ]

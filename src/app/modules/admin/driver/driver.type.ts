@@ -1,19 +1,22 @@
-export interface Manager {
+export interface Driver {
     id: string,
     name: string,
     gender: string,
     phone: string,
     avatarUrl: string,
-    role: string,
-    status: boolean,
+    address: string,
+    status: string,
+    bankName: string,
+    bankAccountNumber: string,
     wallet: {
         id: string,
         balance: number,
         status: string,
-    }
+    },
+    accountStatus: boolean,
 }
 
-export interface ManagerPagination {
+export interface DriverPagination {
     pageSize: number;
     pageNumber: number;
     totalRow: number;

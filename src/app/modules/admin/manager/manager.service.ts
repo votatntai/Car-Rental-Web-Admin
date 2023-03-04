@@ -98,4 +98,45 @@ export class ManagerService {
             ))
         )
     }
+
+    /**
+* Create manager
+*/
+    createManager(data) {
+        return this.managers$.pipe(
+            take(1),
+            switchMap((managers) => this._httpClient.post<Manager>('/api/users/manager', data).pipe(
+                map((newManager) => {
+
+                    // Update manager list with current page size
+                    this._managers.next([newManager, ...managers].slice(0, this._pagination.value.pageSize));
+
+                    return newManager;
+                })
+            ))
+        )
+    }
+
+    /**
+* Update manager
+*/
+    updateManager(id: string, data) {
+        return this.managers$.pipe(
+            take(1),
+            switchMap((managers) => this._httpClient.put<Manager>('/api/users/' + id, data).pipe(
+                map((updatedManager) => {
+
+                    // Find and replace updated manager
+                    const index = managers.findIndex(item => item.id === id);
+                    managers[index] = updatedManager;
+                    this._managers.next(managers);
+
+                    // Update manager
+                    this._manager.next(updatedManager);
+
+                    return updatedManager;
+                })
+            ))
+        )
+    }
 }

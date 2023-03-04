@@ -8,20 +8,20 @@ import { FuseMockApiModule } from '@fuse/lib/mock-api';
 import { CoreModule } from 'app/core/core.module';
 import { appConfig } from 'app/core/config/app.config';
 import { mockApiServices } from 'app/mock-api';
-import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+import { LayoutModule } from './layout/layout.module';
 
 const routerConfig: ExtraOptions = {
-    preloadingStrategy       : PreloadAllModules,
+    preloadingStrategy: PreloadAllModules,
     scrollPositionRestoration: 'enabled'
 };
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes, routerConfig),
@@ -37,10 +37,9 @@ const routerConfig: ExtraOptions = {
         // Layout module of your application
         LayoutModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
-    ]
+    ],
 })
-export class AppModule
-{
+export class AppModule {
 }

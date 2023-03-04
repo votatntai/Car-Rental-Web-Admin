@@ -8,12 +8,9 @@
             <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
         </div>
         <!-- Title -->
-        <div class="text-4xl font-extrabold tracking-tight">Manager Management</div>
+        <div class="text-4xl font-extrabold tracking-tight">Customer Management</div>
         <!-- Actions -->
-        <div class="flex shrink-0 items-center gap-3 mt-6 sm:mt-0 sm:ml-4">
-            <button mat-raised-button [color]="'primary'" (click)="openCreateManagerDialog()">
-                <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
-            </button>
+        <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
             <!-- Search -->
             <mat-form-field class="fuse-mat-dense fuse-mat-rounded min-w-64" [subscriptSizing]="'dynamic'">
                 <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
@@ -22,12 +19,12 @@
         </div>
     </div>
 
-    <!-- Managers list -->
+    <!-- Customers list -->
     <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
-        <ng-container *ngIf="(managers$ | async) as managers">
+        <ng-container *ngIf="(carOwners$ | async) as carOwners">
             <div class="grid">
                 <!-- Header -->
-                <div class="manager-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                <div class="car-owner-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
                     matSort matSortDisableClear>
                     <div>Avatar</div>
                     <div [mat-sort-header]="'name'">Name</div>
@@ -37,26 +34,23 @@
                     <div class="hidden sm:block">
                         Phone
                     </div>
-                    <div class="hidden sm:block">
-                        Role
-                    </div>
                     <div class="hidden sm:block">Active</div>
                     <div class="hidden sm:block">Action</div>
                 </div>
                 <!-- Rows -->
-                <ng-container *ngIf="managers.length > 0; else noManagers">
-                    <ng-container *ngIf="(managers$ | async) as managers">
-                        <ng-container *ngFor="let manager of managers; trackBy: trackByFn">
-                            <div class="manager-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
+                <ng-container *ngIf="carOwners.length > 0; else noCustomers">
+                    <ng-container *ngIf="(carOwners$ | async) as carOwners">
+                        <ng-container *ngFor="let carOwner of carOwners; trackBy: trackByFn">
+                            <div class="car-owner-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
 
                                 <!-- Image -->
                                 <div class="flex items-center">
                                     <div
                                         class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border">
-                                        <img class="w-8" *ngIf="manager.avartarUrl" [alt]="'Manager thumbnail image'"
-                                            [src]="manager.avartarUrl">
+                                        <img class="w-8" *ngIf="carOwner.avartarUrl" [alt]="'Customer thumbnail image'"
+                                            [src]="carOwner.avartarUrl">
                                         <div class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
-                                            *ngIf="!manager.avartarUrl">
+                                            *ngIf="!carOwner.avartarUrl">
                                             NO THUMB
                                         </div>
                                     </div>
@@ -64,31 +58,26 @@
 
                                 <!-- Name -->
                                 <div class="truncate">
-                                    {{manager.name}}
+                                    {{carOwner.name}}
                                 </div>
 
                                 <!-- Gender -->
                                 <div class="hidden sm:block">
-                                    {{manager.gender}}
+                                    {{carOwner.gender}}
                                 </div>
 
                                 <!-- Phone -->
                                 <div class="hidden sm:block">
-                                    {{manager.phone}}
-                                </div>
-
-                                <!-- Role -->
-                                <div class="hidden sm:block">
-                                    {{manager.role}}
+                                    {{carOwner.phone}}
                                 </div>
 
                                 <!-- Active -->
                                 <div class="hidden sm:block">
-                                    <ng-container *ngIf="manager.status">
+                                    <ng-container *ngIf="carOwner.status">
                                         <mat-icon class="text-green-400 icon-size-5"
                                             [svgIcon]="'heroicons_solid:check'"></mat-icon>
                                     </ng-container>
-                                    <ng-container *ngIf="!manager.status">
+                                    <ng-container *ngIf="!carOwner.status">
                                         <mat-icon class="text-gray-400 icon-size-5"
                                             [svgIcon]="'heroicons_solid:x'"></mat-icon>
                                     </ng-container>
@@ -96,16 +85,10 @@
 
                                 <!-- Action -->
                                 <div class="hidden sm:block">
-                                    <div class="flex gap-3">
-                                        <span [routerLink]="['/accounts/managers', manager.id]">
-                                            <mat-icon class="text-blue-500 icon-size-5 cursor-pointer"
-                                                [svgIcon]="'heroicons_outline:eye'"></mat-icon>
-                                        </span>
-                                        <span (click)="openUpdateManagerDialog(manager)">
-                                            <mat-icon class="text-amber-500 icon-size-5 cursor-pointer"
-                                                [svgIcon]="'heroicons_outline:pencil-alt'"></mat-icon>
-                                        </span>
-                                    </div>
+                                    <span [routerLink]="['/accounts/car-owners', carOwner.id]">
+                                        <mat-icon class="text-blue-500 icon-size-5 cursor-pointer"
+                                            [svgIcon]="'heroicons_outline:pencil-alt'"></mat-icon>
+                                    </span>
                                 </div>
 
                             </div>
@@ -123,8 +106,8 @@
 
         </ng-container>
 
-        <ng-template #noManagers>
-            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no managers!
+        <ng-template #noCustomers>
+            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no carOwners!
             </div>
         </ng-template>
 

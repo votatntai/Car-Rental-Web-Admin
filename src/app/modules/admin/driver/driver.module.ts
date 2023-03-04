@@ -10,9 +10,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { DriverDetailComponent } from './detail/driver-detail.component';
 import { DriverDetailResolver } from './detail/driver-detail.resolvers';
-import { AccountStatusPipe } from '@fuse/pipes/status/status.pipe';
 import { DriverComponent } from './driver.component';
 import { DriversResolver } from './driver.resolvers';
+import { AccountStatusPipeModule } from '@fuse/pipes/status/status-pipe.module';
 
 const driverRoutes: Route[] = [
     {
@@ -33,11 +33,8 @@ const driverRoutes: Route[] = [
 
 @NgModule({
     declarations: [
-        // Component
         DriverComponent,
         DriverDetailComponent,
-        // Pipe
-        AccountStatusPipe
     ],
     imports: [
         CommonModule,
@@ -49,7 +46,8 @@ const driverRoutes: Route[] = [
         ReactiveFormsModule,
         MatButtonModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        AccountStatusPipeModule
     ],
 })
 export class DriverModule {

@@ -8,33 +8,33 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { CustomerDetailComponent } from './detail/customer-detail.component';
-import { CustomerDetailResolver } from './detail/customer-detail.resolvers';
-import { CustomerComponent } from './customer.component';
-import { CustomersResolver } from './customer.resolvers';
+import { CarOwnerDetailComponent } from './detail/car-owner-detail.component';
+import { CarOwnerDetailResolver } from './detail/car-owner-detail.resolvers';
+import { CarOwnerComponent } from './car-owner.component';
+import { CarOwnersResolver } from './car-owner.resolvers';
 import { AccountStatusPipeModule } from '@fuse/pipes/status/status-pipe.module';
 
 const driverRoutes: Route[] = [
     {
         path: '',
-        component: CustomerComponent,
+        component: CarOwnerComponent,
         resolve: {
-            driver: CustomersResolver
+            driver: CarOwnersResolver
         },
     },
     {
         path: ':id',
-        component: CustomerDetailComponent,
+        component: CarOwnerDetailComponent,
         resolve: {
-            driverDetail: CustomerDetailResolver
+            driverDetail: CarOwnerDetailResolver
         }
     }
 ];
 
 @NgModule({
     declarations: [
-        CustomerComponent,
-        CustomerDetailComponent,
+        CarOwnerComponent,
+        CarOwnerDetailComponent,
     ],
     imports: [
         CommonModule,
@@ -50,5 +50,5 @@ const driverRoutes: Route[] = [
         AccountStatusPipeModule
     ],
 })
-export class CustomerModule {
+export class CarOwnerModule {
 }

@@ -1,51 +1,47 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { fuseAnimations } from '@fuse/animations';
 import { debounceTime, map, merge, Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { CreateManagerComponent } from './create/create-manager.component';
-import { ManagerService } from './manager.service';
-import { Manager, ManagerPagination } from './manager.type';
-import { UpdateManagerComponent } from './update/update-manager.component';
+import { CarOwnerService } from './car-owner.service';
+import { CarOwner, CarOwnerPagination } from './car-owner.type';
 
 @Component({
-    selector: 'app-manager',
-    templateUrl: 'manager.component.html',
-    styleUrls: ['manager.component.css'],
+    selector: 'app-carOwner',
+    templateUrl: 'car-owner.component.html',
+    styleUrls: ['car-owner.component.css'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: fuseAnimations
 })
 
-export class ManagerComponent implements OnInit, AfterViewInit {
+export class CarOwnerComponent implements OnInit, AfterViewInit {
 
     @ViewChild(MatPaginator) private _paginator: MatPaginator;
     @ViewChild(MatSort) private _sort: MatSort;
 
-    managers$: Observable<Manager[]>;
+    carOwners$: Observable<CarOwner[]>;
 
     searchInputControl: UntypedFormControl = new UntypedFormControl();
     isLoading: boolean = false;
-    pagination: ManagerPagination;
+    pagination: CarOwnerPagination;
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     constructor(
-        private _managerService: ManagerService,
+        private _carOwnerService: CarOwnerService,
         private _changeDetectorRef: ChangeDetectorRef,
-        private _dialog: MatDialog
     ) { }
 
     ngOnInit() {
         // Get the products
-        this.managers$ = this._managerService.managers$;
+        this.carOwners$ = this._carOwnerService.carOwners$;
 
         // Get the pagination
-        this._managerService.pagination$
+        this._carOwnerService.pagination$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((pagination: ManagerPagination) => {
+            .subscribe((pagination: CarOwnerPagination) => {
 
                 // Update the pagination
                 this.pagination = pagination;
@@ -85,7 +81,7 @@ export class ManagerComponent implements OnInit, AfterViewInit {
             merge(this._sort.sortChange, this._paginator.page).pipe(
                 switchMap(() => {
                     this.isLoading = true;
-                    return this._managerService.getManagers(this._paginator.pageIndex, this._paginator.pageSize, this._sort.active, this._sort.direction, this.searchInputControl.value);
+                    return this._carOwnerService.getCarOwners(this._paginator.pageIndex, this._paginator.pageSize, this._sort.active, this._sort.direction, this.searchInputControl.value);
                 }),
                 map(() => {
                     this.isLoading = false;
@@ -102,28 +98,11 @@ export class ManagerComponent implements OnInit, AfterViewInit {
                 debounceTime(300),
                 switchMap((query) => {
                     this.isLoading = true;
-                    return this._managerService.getManagers(0, 10, 'name', 'asc', query);
+                    return this._carOwnerService.getCarOwners(0, 10, 'name', 'asc', query);
                 }),
                 map(() => {
                     this.isLoading = false;
                 })
             ).subscribe();
-    }
-
-    openCreateManagerDialog() {
-        this._dialog.open(CreateManagerComponent, {
-            width: '480px'
-        }).afterClosed().subscribe(() => {
-            // After dialog closed
-        })
-    }
-
-    openUpdateManagerDialog(manager: Manager) {
-        this._dialog.open(UpdateManagerComponent, {
-            width: '480px',
-            data: manager
-        }).afterClosed().subscribe(() => {
-            // After dialog closed
-        })
     }
 }

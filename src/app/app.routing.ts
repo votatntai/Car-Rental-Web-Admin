@@ -87,6 +87,7 @@ export const appRoutes: Route[] = [
             { path: 'managers', loadChildren: () => import('app/modules/admin/manager/manager.module').then(m => m.ManagerModule) },
             { path: 'drivers', loadChildren: () => import('app/modules/admin/driver/driver.module').then(m => m.DriverModule) },
             { path: 'customers', loadChildren: () => import('app/modules/admin/customer/customer.module').then(m => m.CustomerModule) },
+            { path: 'car-owners', loadChildren: () => import('app/modules/admin/car-owner/car-owner.module').then(m => m.CarOwnerModule) },
         ]
     }
 ];

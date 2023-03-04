@@ -12,7 +12,11 @@ import { ManagersResolver } from './manager.resolvers';
 import { MatSortModule } from '@angular/material/sort';
 import { ManagerDetailComponent } from './detail/manager-detail.component';
 import { ManagerDetailResolver } from './detail/manager-detail.resolvers';
-import { AccountStatusPipe } from '@fuse/pipes/status/status.pipe';
+import { AccountStatusPipeModule } from '@fuse/pipes/status/status-pipe.module';
+import { CreateManagerComponent } from './create/create-manager.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { UpdateManagerComponent } from './update/update-manager.component';
 
 const managerRoutes: Route[] = [
     {
@@ -33,11 +37,10 @@ const managerRoutes: Route[] = [
 
 @NgModule({
     declarations: [
-        // Component
         ManagerComponent,
         ManagerDetailComponent,
-        // Pipe
-        AccountStatusPipe
+        CreateManagerComponent,
+        UpdateManagerComponent
     ],
     imports: [
         CommonModule,
@@ -49,7 +52,10 @@ const managerRoutes: Route[] = [
         ReactiveFormsModule,
         MatButtonModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        AccountStatusPipeModule,
+        MatDialogModule,
+        MatSelectModule
     ],
 })
 export class ManagerModule {

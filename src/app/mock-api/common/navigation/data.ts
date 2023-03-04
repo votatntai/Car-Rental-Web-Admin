@@ -38,6 +38,29 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link: '/accounts/customers'
             },
         ]
+    },
+    {
+        id: 'materials',
+        title: 'Materials',
+        subtitle: 'Material Management',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'materials.showroom',
+                title: 'Showroom',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/materials/showrooms'
+            },
+            {
+                id: 'materials.machines',
+                title: 'Machine',
+                type: 'basic',
+                icon: 'heroicons_outline:truck',
+                link: '/materials/machines'
+            },
+        ]
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
@@ -75,6 +98,29 @@ export const compactNavigation: FuseNavigationItem[] = [
                 type: 'basic',
                 icon: 'heroicons_outline:clipboard-check',
                 link: '/accounts/customers'
+            },
+        ]
+    },
+    {
+        id: 'materials',
+        title: 'Materials',
+        subtitle: 'Material Management',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'materials.showroom',
+                title: 'Showroom',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/materials/showrooms'
+            },
+            {
+                id: 'materials.machines',
+                title: 'Machine',
+                type: 'basic',
+                icon: 'heroicons_outline:truck',
+                link: '/materials/machines'
             },
         ]
     }
@@ -116,6 +162,29 @@ export const futuristicNavigation: FuseNavigationItem[] = [
                 link: '/accounts/customers'
             },
         ]
+    },
+    {
+        id: 'materials',
+        title: 'Materials',
+        subtitle: 'Material Management',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'materials.showroom',
+                title: 'Showroom',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/materials/showrooms'
+            },
+            {
+                id: 'materials.machines',
+                title: 'Machine',
+                type: 'basic',
+                icon: 'heroicons_outline:truck',
+                link: '/materials/machines'
+            },
+        ]
     }
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
@@ -153,6 +222,29 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                 type: 'basic',
                 icon: 'heroicons_outline:clipboard-check',
                 link: '/accounts/customers'
+            },
+        ]
+    },
+    {
+        id: 'materials',
+        title: 'Materials',
+        subtitle: 'Material Management',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'materials.showroom',
+                title: 'Showroom',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/materials/showrooms'
+            },
+            {
+                id: 'materials.machines',
+                title: 'Machine',
+                type: 'basic',
+                icon: 'heroicons_outline:truck',
+                link: '/materials/machines'
             },
         ]
     }

@@ -28,11 +28,14 @@
                     matSort matSortDisableClear>
                     <div>Avatar</div>
                     <div [mat-sort-header]="'name'">Name</div>
-                    <div class="hidden sm:block" [mat-sort-header]="'gender'">
+                    <div class="hidden sm:block">
                         Gender
                     </div>
-                    <div class="hidden sm:block" [mat-sort-header]="'phone'">
+                    <div class="hidden sm:block">
                         Phone
+                    </div>
+                    <div class="hidden sm:block">
+                        Address
                     </div>
                     <div class="hidden sm:block">Active</div>
                     <div class="hidden sm:block">Action</div>
@@ -71,13 +74,18 @@
                                     {{driver.phone}}
                                 </div>
 
+                                <!-- Phone -->
+                                <div class="hidden sm:block">
+                                    {{driver.address}}
+                                </div>
+
                                 <!-- Active -->
                                 <div class="hidden sm:block">
-                                    <ng-container *ngIf="driver.status">
+                                    <ng-container *ngIf="driver.accountStatus">
                                         <mat-icon class="text-green-400 icon-size-5"
                                             [svgIcon]="'heroicons_solid:check'"></mat-icon>
                                     </ng-container>
-                                    <ng-container *ngIf="!driver.status">
+                                    <ng-container *ngIf="!driver.accountStatus">
                                         <mat-icon class="text-gray-400 icon-size-5"
                                             [svgIcon]="'heroicons_solid:x'"></mat-icon>
                                     </ng-container>

@@ -10,7 +10,10 @@
         <!-- Title -->
         <div class="text-4xl font-extrabold tracking-tight">Driver Management</div>
         <!-- Actions -->
-        <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
+        <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4 gap-3">
+            <button mat-raised-button [color]="'primary'" (click)="openCreateDriverDialog()">
+                <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+            </button>
             <!-- Search -->
             <mat-form-field class="fuse-mat-dense fuse-mat-rounded min-w-64" [subscriptSizing]="'dynamic'">
                 <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
@@ -93,10 +96,16 @@
 
                                 <!-- Action -->
                                 <div class="hidden sm:block">
-                                    <span [routerLink]="['/accounts/drivers', driver.id]">
-                                        <mat-icon class="text-blue-500 icon-size-5 cursor-pointer"
-                                            [svgIcon]="'heroicons_outline:pencil-alt'"></mat-icon>
-                                    </span>
+                                    <div class="flex gap-3">
+                                        <span [routerLink]="['/accounts/drivers', driver.id]">
+                                            <mat-icon class="text-blue-500 icon-size-5 cursor-pointer"
+                                                [svgIcon]="'heroicons_outline:eye'"></mat-icon>
+                                        </span>
+                                        <span (click)="openUpdateDriverDialog(driver)">
+                                            <mat-icon class="text-amber-500 icon-size-5 cursor-pointer"
+                                                [svgIcon]="'heroicons_outline:pencil-alt'"></mat-icon>
+                                        </span>
+                                    </div>
                                 </div>
 
                             </div>
@@ -122,3 +131,17 @@
     </div>
 
 </div>
+
+<!-- Notification -->
+<a class="cursor-pointer" *ngIf="flashMessage">
+    <fuse-alert class="absolute bottom-0 right-0 z-999" [type]="'success'" [appearance]="'border'"
+        *ngIf="flashMessage === 'success'">
+        <span fuseAlertTitle>Thành công</span>
+        {{message}}
+    </fuse-alert>
+    <fuse-alert class="absolute bottom-0 right-0 z-999" [type]="'error'" [appearance]="'border'"
+        *ngIf="flashMessage === 'error'">
+        <span fuseAlertTitle>Có lỗi xảy ra</span>
+        {{message}}
+    </fuse-alert>
+</a>

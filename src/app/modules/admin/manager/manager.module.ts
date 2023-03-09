@@ -17,6 +17,7 @@ import { CreateManagerComponent } from './create/create-manager.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { UpdateManagerComponent } from './update/update-manager.component';
+import { FuseAlertModule } from '@fuse/components/alert';
 
 const managerRoutes: Route[] = [
     {
@@ -55,7 +56,8 @@ const managerRoutes: Route[] = [
         MatSortModule,
         AccountStatusPipeModule,
         MatDialogModule,
-        MatSelectModule
+        MatSelectModule,
+        FuseAlertModule
     ],
 })
 export class ManagerModule {

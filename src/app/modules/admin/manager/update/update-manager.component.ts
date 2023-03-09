@@ -1,8 +1,7 @@
-import { AfterViewChecked, Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { phoneValidator } from '@fuse/validators/custom-validator';
-import { Subject, takeUntil } from 'rxjs';
 import { ManagerService } from '../manager.service';
 import { Manager } from '../manager.type';
 
@@ -14,8 +13,8 @@ import { Manager } from '../manager.type';
 export class UpdateManagerComponent implements OnInit {
 
     updateManagerForm: UntypedFormGroup;
-
-    private _unsubscribeAll: Subject<any> = new Subject<any>();
+    flashMessage: 'success' | 'error' | null = null;
+    message: string = null;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: Manager,
@@ -44,8 +43,12 @@ export class UpdateManagerComponent implements OnInit {
 
     public updateManager(id: string) {
         if (this.updateManagerForm.valid) {
-            this._managerService.updateManager(id, this.updateManagerForm.value).subscribe(() => {
-                this.matDialogRef.close();
+            this._managerService.updateManager(id, this.updateManagerForm.value).subscribe(manager => {
+                if (manager) {
+                    this.matDialogRef.close('success');
+                } else {
+                    this.matDialogRef.close('error');
+                }
             })
         }
     }

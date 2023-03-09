@@ -29,10 +29,6 @@
                     class="w-full whitespace-nowrap text-ellipsis overflow-hidden text-center leading-normal font-medium">
                     {{user.name}}
                 </div>
-                <div
-                    class="w-full mt-0.5 whitespace-nowrap text-ellipsis overflow-hidden text-center text-md leading-normal font-medium text-secondary">
-                    Balance: {{user.wallet.balance | number:'1.2-2'}} VNĐ
-                </div>
             </div>
         </div>
     </ng-container>
@@ -56,7 +52,7 @@
         </button>
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
-            <languages></languages>
+            <!-- <languages></languages> -->
             <fuse-fullscreen class="hidden md:block"></fuse-fullscreen>
             <search [appearance]="'bar'"></search>
             <!-- <shortcuts></shortcuts> -->

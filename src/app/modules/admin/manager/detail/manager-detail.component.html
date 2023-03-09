@@ -44,31 +44,46 @@
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:credit-card"></mat-icon>
                         <span class="font-semibold ">
-                            Balance: {{manager.wallet.balance | number:'1.2-2'}} VNĐ
+                            Balance:
+                        </span>
+                        <span>
+                            {{manager.wallet.balance | number:'1.2-2'}} VNĐ
                         </span>
                     </div>
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:phone"></mat-icon>
                         <span class="font-semibold ">
-                            Phone: {{manager.phone}}
+                            Phone:
+                        </span>
+                        <span>
+                            {{manager.phone}}
                         </span>
                     </div>
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:users"></mat-icon>
                         <span class="font-semibold ">
-                            Gender: {{manager.gender}}
+                            Gender:
+                        </span>
+                        <span>
+                            {{manager.gender}}
                         </span>
                     </div>
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:shield-exclamation"></mat-icon>
                         <span class="font-semibold ">
-                            Role: {{manager.role}}
+                            Role:
+                        </span>
+                        <span>
+                            {{manager.role}}
                         </span>
                     </div>
                     <div class="flex justify-items-center gap-3">
                         <mat-icon svgIcon="heroicons_outline:status-online"></mat-icon>
                         <span class="font-semibold ">
-                            Status: {{manager.status | accountStatus}}
+                            Status:
+                        </span>
+                        <span>
+                            {{manager.status | accountStatus}}
                         </span>
                     </div>
                 </div>

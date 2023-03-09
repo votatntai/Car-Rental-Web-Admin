@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 shadow">
         <span class="font-semibold text-lg">
-            Create manager
+            Create driver
         </span>
         <button mat-icon-button (click)="matDialogRef.close()" [tabIndex]="-1">
             <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
@@ -12,7 +12,7 @@
 
     <div class="flex flex-col sm:flex-row flex-auto items-center sm:items-start p-8 pb-6 sm:pb-8">
 
-        <form [formGroup]="createManagerForm" class="w-full">
+        <form [formGroup]="createDriverForm" class="w-full">
 
             <!-- Username -->
             <div class="mb-3">
@@ -20,8 +20,8 @@
                     <mat-label>Username</mat-label>
                     <input matInput [formControlName]="'username'" />
                 </mat-form-field>
-                <div class="text-red-500" *ngIf="createManagerForm.get('username').invalid && createManagerForm.get('username').touched 
-                && createManagerForm.get('username').errors?.invalidUsername">
+                <div class="text-red-500" *ngIf="createDriverForm.get('username').invalid && createDriverForm.get('username').touched 
+                && createDriverForm.get('username').errors?.invalidUsername">
                     Username must be between 5 and 20 characters, no spaces.
                 </div>
             </div>
@@ -32,8 +32,8 @@
                     <mat-label>Password</mat-label>
                     <input matInput type="password" [formControlName]="'password'" />
                 </mat-form-field>
-                <div class="text-red-500" *ngIf="createManagerForm.get('password').invalid && createManagerForm.get('password').touched 
-                    && createManagerForm.get('password').errors?.invalidPassword">
+                <div class="text-red-500" *ngIf="createDriverForm.get('password').invalid && createDriverForm.get('password').touched 
+                    && createDriverForm.get('password').errors?.invalidPassword">
                     Password must be more than 8 characters, contain letters, capital letters, numbers and special
                     characters. </div>
             </div>
@@ -44,8 +44,8 @@
                     <mat-label>Confirm</mat-label>
                     <input matInput type="password" [formControlName]="'confirmPassword'" />
                 </mat-form-field>
-                <div class="text-red-500" *ngIf="createManagerForm.get('confirmPassword').invalid && createManagerForm.get('confirmPassword').touched 
-                    && createManagerForm.get('confirmPassword').errors?.invalidConfirmPassword">
+                <div class="text-red-500" *ngIf="createDriverForm.get('confirmPassword').invalid && createDriverForm.get('confirmPassword').touched 
+                    && createDriverForm.get('confirmPassword').errors?.invalidConfirmPassword">
                     Password does not match.
                 </div>
             </div>
@@ -68,6 +68,27 @@
                 </mat-form-field>
             </div>
 
+            <!-- Address -->
+            <mat-form-field class="w-full mb-3">
+                <mat-label>Address</mat-label>
+                <input matInput type="text" [formControlName]="'address'" />
+            </mat-form-field>
+
+            <div class="grid grid-cols-2 gap-3 w-full mb-3">
+                <!-- Bank name -->
+                <mat-form-field class="w-full">
+                    <mat-label>Bank Name</mat-label>
+                    <input matInput type="text" [formControlName]="'bankName'" />
+                </mat-form-field>
+
+                <!-- Bank account number -->
+                <mat-form-field class="w-full">
+                    <mat-label>Bank Account Number</mat-label>
+                    <input matInput type="text" [formControlName]="'bankAccountNumber'" />
+                </mat-form-field>
+            </div>
+
+
             <!-- Phone -->
             <div class="mb-3">
                 <mat-form-field class="w-full">
@@ -75,14 +96,14 @@
                     <input matInput type="text" [formControlName]="'phone'" />
                 </mat-form-field>
                 <div class="text-red-500"
-                    *ngIf="createManagerForm.get('phone').invalid && createManagerForm.get('phone').touched && createManagerForm.get('phone').errors?.phone">
+                    *ngIf="createDriverForm.get('phone').invalid && createDriverForm.get('phone').touched && createDriverForm.get('phone').errors?.phone">
                     Please enter a valid phone number.
                 </div>
             </div>
 
             <div class="flex justify-end">
                 <!-- Submit button -->
-                <button mat-raised-button [color]="'primary'" (click)="createManager()">
+                <button mat-raised-button [color]="'primary'" (click)="createDriver()">
                     <span>Create</span>
                     <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
                 </button>

@@ -26,6 +26,8 @@ export class ManagerComponent implements OnInit, AfterViewInit {
 
     managers$: Observable<Manager[]>;
 
+    flashMessage: 'success' | 'error' | null = null;
+    message: string = null;
     searchInputControl: UntypedFormControl = new UntypedFormControl();
     isLoading: boolean = false;
     pagination: ManagerPagination;
@@ -113,8 +115,13 @@ export class ManagerComponent implements OnInit, AfterViewInit {
     openCreateManagerDialog() {
         this._dialog.open(CreateManagerComponent, {
             width: '480px'
-        }).afterClosed().subscribe(() => {
+        }).afterClosed().subscribe(result => {
             // After dialog closed
+            if (result === 'success') {
+                this.showFlashMessage(result, 'Tạo mới thành công', 3000);
+            } else {
+                this.showFlashMessage(result, 'Đã có lỗi xảy ra', 3000);
+            }
         })
     }
 
@@ -122,8 +129,23 @@ export class ManagerComponent implements OnInit, AfterViewInit {
         this._dialog.open(UpdateManagerComponent, {
             width: '480px',
             data: manager
-        }).afterClosed().subscribe(() => {
+        }).afterClosed().subscribe(result => {
             // After dialog closed
+            if (result === 'success') {
+                this.showFlashMessage(result, 'Cập nhật thành công', 3000);
+            } else {
+                this.showFlashMessage(result, 'Đã có lỗi xảy ra', 3000);
+            }
         })
+    }
+
+    private showFlashMessage(type: 'success' | 'error', message: string, time: number): void {
+        this.flashMessage = type;
+        this.message = message;
+        this._changeDetectorRef.markForCheck();
+        setTimeout(() => {
+            this.flashMessage = this.message = null;
+            this._changeDetectorRef.markForCheck();
+        }, time);
     }
 }

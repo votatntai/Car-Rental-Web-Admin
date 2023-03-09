@@ -2,50 +2,53 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { confirmPasswordValidator, passwordValidator, phoneValidator, usernameValidator } from '@fuse/validators/custom-validator';
-import { ManagerService } from '../manager.service';
+import { DriverService } from '../driver.service';
 
 @Component({
-    selector: 'app-create-manager',
-    templateUrl: 'create-manager.component.html'
+    selector: 'app-create-driver',
+    templateUrl: 'create-driver.component.html'
 })
 
-export class CreateManagerComponent implements OnInit {
+export class CreateDriverComponent implements OnInit {
 
-    createManagerForm: UntypedFormGroup;
+    createDriverForm: UntypedFormGroup;
 
     constructor(
-        private _managerServive: ManagerService,
-        public matDialogRef: MatDialogRef<CreateManagerComponent>,
+        private _driverServive: DriverService,
+        public matDialogRef: MatDialogRef<CreateDriverComponent>,
         private _formBuilder: UntypedFormBuilder
     ) { }
 
     ngOnInit() {
-        this.initCreateManagerForm();
+        this.initCreateDriverForm();
     }
 
-    private initCreateManagerForm() {
-        this.createManagerForm = this._formBuilder.group({
+    private initCreateDriverForm() {
+        this.createDriverForm = this._formBuilder.group({
             username: ['', [Validators.required, usernameValidator()]],
             password: ['', [Validators.required, passwordValidator()]],
             confirmPassword: [''],
             name: ['', Validators.required],
+            address: ['', Validators.required],
+            bankName: ['', Validators.required],
+            bankAccountNumber: ['', Validators.required],
             gender: ['', Validators.required],
             phone: ['', [Validators.required, phoneValidator()]],
         });
-        this.createManagerForm.get('confirmPassword').setValidators([
+        this.createDriverForm.get('confirmPassword').setValidators([
             Validators.required,
-            confirmPasswordValidator(this.createManagerForm.get('password'))
+            confirmPasswordValidator(this.createDriverForm.get('password'))
         ]);
     }
 
     public onGenderChange(value: string) {
-        this.createManagerForm.controls['gender'].setValue(value);
+        this.createDriverForm.controls['gender'].setValue(value);
     }
 
-    public createManager() {
-        if (this.createManagerForm.valid) {
-            this._managerServive.createManager(this.createManagerForm.value).subscribe(manager => {
-                if (manager) {
+    public createDriver() {
+        if (this.createDriverForm.valid) {
+            this._driverServive.createDriver(this.createDriverForm.value).subscribe(result => {
+                if (result) {
                     this.matDialogRef.close('success');
                 } else {
                     this.matDialogRef.close('error');

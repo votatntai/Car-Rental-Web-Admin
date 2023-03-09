@@ -1,11 +1,14 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { fuseAnimations } from '@fuse/animations';
 import { debounceTime, map, merge, Observable, Subject, switchMap, takeUntil } from 'rxjs';
+import { CreateDriverComponent } from './create/create-driver.component';
 import { DriverService } from './driver.service';
 import { Driver, DriverPagination } from './driver.type';
+import { UpdateDriverComponent } from './update/update-driver.component';
 
 @Component({
     selector: 'app-driver',
@@ -23,6 +26,8 @@ export class DriverComponent implements OnInit, AfterViewInit {
 
     drivers$: Observable<Driver[]>;
 
+    flashMessage: 'success' | 'error' | null = null;
+    message: string = null;
     searchInputControl: UntypedFormControl = new UntypedFormControl();
     isLoading: boolean = false;
     pagination: DriverPagination;
@@ -32,6 +37,7 @@ export class DriverComponent implements OnInit, AfterViewInit {
     constructor(
         private _driverService: DriverService,
         private _changeDetectorRef: ChangeDetectorRef,
+        private _dialog: MatDialog
     ) { }
 
     ngOnInit() {
@@ -104,5 +110,42 @@ export class DriverComponent implements OnInit, AfterViewInit {
                     this.isLoading = false;
                 })
             ).subscribe();
+    }
+
+    openCreateDriverDialog() {
+        this._dialog.open(CreateDriverComponent, {
+            width: '480px'
+        }).afterClosed().subscribe(result => {
+            // After dialog closed
+            if (result === 'success') {
+                this.showFlashMessage(result, 'Tạo mới thành công', 3000);
+            } else {
+                this.showFlashMessage(result, 'Đã có lỗi xảy ra', 3000);
+            }
+        })
+    }
+
+    openUpdateDriverDialog(manager: Driver) {
+        this._dialog.open(UpdateDriverComponent, {
+            width: '480px',
+            data: manager
+        }).afterClosed().subscribe(result => {
+            // After dialog closed
+            if (result === 'success') {
+                this.showFlashMessage(result, 'Cập nhật thành công', 3000);
+            } else {
+                this.showFlashMessage(result, 'Đã có lỗi xảy ra', 3000);
+            }
+        })
+    }
+
+    private showFlashMessage(type: 'success' | 'error', message: string, time: number): void {
+        this.flashMessage = type;
+        this.message = message;
+        this._changeDetectorRef.markForCheck();
+        setTimeout(() => {
+            this.flashMessage = this.message = null;
+            this._changeDetectorRef.markForCheck();
+        }, time);
     }
 }

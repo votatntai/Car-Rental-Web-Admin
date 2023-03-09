@@ -13,6 +13,11 @@ import { DriverDetailResolver } from './detail/driver-detail.resolvers';
 import { DriverComponent } from './driver.component';
 import { DriversResolver } from './driver.resolvers';
 import { AccountStatusPipeModule } from '@fuse/pipes/status/status-pipe.module';
+import { CreateDriverComponent } from './create/create-driver.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateDriverComponent } from './update/update-driver.component';
+import { FuseAlertModule } from '@fuse/components/alert';
 
 const driverRoutes: Route[] = [
     {
@@ -35,6 +40,8 @@ const driverRoutes: Route[] = [
     declarations: [
         DriverComponent,
         DriverDetailComponent,
+        CreateDriverComponent,
+        UpdateDriverComponent
     ],
     imports: [
         CommonModule,
@@ -47,7 +54,10 @@ const driverRoutes: Route[] = [
         MatButtonModule,
         MatPaginatorModule,
         MatSortModule,
-        AccountStatusPipeModule
+        AccountStatusPipeModule,
+        MatSelectModule,
+        MatDialogModule,
+        FuseAlertModule
     ],
 })
 export class DriverModule {

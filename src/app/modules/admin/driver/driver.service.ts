@@ -98,4 +98,45 @@ export class DriverService {
             ))
         )
     }
+
+    /**
+* Create driver
+*/
+    createDriver(data) {
+        return this.drivers$.pipe(
+            take(1),
+            switchMap((drivers) => this._httpClient.post<Driver>('/api/drivers', data).pipe(
+                map((newDriver) => {
+
+                    // Update driver list with current page size
+                    this._drivers.next([newDriver, ...drivers].slice(0, this._pagination.value.pageSize));
+
+                    return newDriver;
+                })
+            ))
+        )
+    }
+
+    /**
+    * Update driver
+    */
+    updateDriver(id: string, data) {
+        return this.drivers$.pipe(
+            take(1),
+            switchMap((drivers) => this._httpClient.put<Driver>('/api/drivers/' + id, data).pipe(
+                map((updatedDriver) => {
+
+                    // Find and replace updated driver
+                    const index = drivers.findIndex(item => item.id === id);
+                    drivers[index] = updatedDriver;
+                    this._drivers.next(drivers);
+
+                    // Update driver
+                    this._driver.next(updatedDriver);
+
+                    return updatedDriver;
+                })
+            ))
+        )
+    }
 }

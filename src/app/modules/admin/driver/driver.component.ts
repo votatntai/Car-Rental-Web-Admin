@@ -114,7 +114,7 @@ export class DriverComponent implements OnInit, AfterViewInit {
 
     openCreateDriverDialog() {
         this._dialog.open(CreateDriverComponent, {
-            width: '480px'
+            width: '720px'
         }).afterClosed().subscribe(result => {
             // After dialog closed
             if (result === 'success') {
@@ -127,7 +127,7 @@ export class DriverComponent implements OnInit, AfterViewInit {
 
     openUpdateDriverDialog(manager: Driver) {
         this._dialog.open(UpdateDriverComponent, {
-            width: '480px',
+            width: '720px',
             data: manager
         }).afterClosed().subscribe(result => {
             // After dialog closed

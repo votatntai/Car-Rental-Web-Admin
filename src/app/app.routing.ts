@@ -86,5 +86,19 @@ export const appRoutes: Route[] = [
             { path: 'customers', loadChildren: () => import('app/modules/admin/customer/customer.module').then(m => m.CustomerModule) },
             { path: 'car-owners', loadChildren: () => import('app/modules/admin/car-owner/car-owner.module').then(m => m.CarOwnerModule) },
         ]
+    },
+
+    // Material routes
+    {
+        path: 'materials',
+        canMatch: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            { path: 'machines', loadChildren: () => import('app/modules/admin/machine/machine.module').then(m => m.MachineModule) },
+            { path: 'car-registrations', loadChildren: () => import('app/modules/admin/car-registration/car-registration.module').then(m => m.CarRegistrationModule) },
+        ]
     }
 ];

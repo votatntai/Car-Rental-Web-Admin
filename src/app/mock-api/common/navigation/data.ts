@@ -60,6 +60,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon: 'heroicons_outline:truck',
                 link: '/materials/machines'
             },
+            {
+                id: 'materials.carRegistration',
+                title: 'Registration',
+                type: 'basic',
+                icon: 'heroicons_outline:pencil-alt',
+                link: '/materials/car-registrations'
+            },
         ]
     }
 ];
@@ -121,6 +128,13 @@ export const compactNavigation: FuseNavigationItem[] = [
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/materials/machines'
+            },
+            {
+                id: 'materials.carRegistration',
+                title: 'Registration',
+                type: 'basic',
+                icon: 'heroicons_outline:pencil-alt',
+                link: '/materials/car-registrations'
             },
         ]
     }
@@ -184,6 +198,13 @@ export const futuristicNavigation: FuseNavigationItem[] = [
                 icon: 'heroicons_outline:truck',
                 link: '/materials/machines'
             },
+            {
+                id: 'materials.carRegistration',
+                title: 'Registration',
+                type: 'basic',
+                icon: 'heroicons_outline:pencil-alt',
+                link: '/materials/car-registrations'
+            },
         ]
     }
 ];
@@ -245,6 +266,13 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/materials/machines'
+            },
+            {
+                id: 'materials.carRegistration',
+                title: 'Registration',
+                type: 'basic',
+                icon: 'heroicons_outline:pencil-alt',
+                link: '/materials/car-registrations'
             },
         ]
     }

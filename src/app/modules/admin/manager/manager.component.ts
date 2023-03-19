@@ -114,7 +114,7 @@ export class ManagerComponent implements OnInit, AfterViewInit {
 
     openCreateManagerDialog() {
         this._dialog.open(CreateManagerComponent, {
-            width: '480px'
+            width: '720px'
         }).afterClosed().subscribe(result => {
             // After dialog closed
             if (result === 'success') {
@@ -127,7 +127,7 @@ export class ManagerComponent implements OnInit, AfterViewInit {
 
     openUpdateManagerDialog(manager: Manager) {
         this._dialog.open(UpdateManagerComponent, {
-            width: '480px',
+            width: '720px',
             data: manager
         }).afterClosed().subscribe(result => {
             // After dialog closed

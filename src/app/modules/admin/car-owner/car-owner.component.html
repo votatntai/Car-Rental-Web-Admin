@@ -8,7 +8,7 @@
             <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
         </div>
         <!-- Title -->
-        <div class="text-4xl font-extrabold tracking-tight">Customer Management</div>
+        <div class="text-4xl font-extrabold tracking-tight">Car Owner Management</div>
         <!-- Actions -->
         <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
             <!-- Search -->
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <!-- Customers list -->
+    <!-- Car owners list -->
     <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
         <ng-container *ngIf="(carOwners$ | async) as carOwners">
             <div class="grid">
@@ -38,7 +38,7 @@
                     <div class="hidden sm:block">Action</div>
                 </div>
                 <!-- Rows -->
-                <ng-container *ngIf="carOwners.length > 0; else noCustomers">
+                <ng-container *ngIf="carOwners.length > 0; else noCarOwners">
                     <ng-container *ngIf="(carOwners$ | async) as carOwners">
                         <ng-container *ngFor="let carOwner of carOwners; trackBy: trackByFn">
                             <div class="car-owner-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
@@ -47,7 +47,7 @@
                                 <div class="flex items-center">
                                     <div
                                         class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border">
-                                        <img class="w-8" *ngIf="carOwner.avartarUrl" [alt]="'Customer thumbnail image'"
+                                        <img class="w-8" *ngIf="carOwner.avartarUrl" [alt]="'Car Owner thumbnail image'"
                                             [src]="carOwner.avartarUrl">
                                         <div class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
                                             *ngIf="!carOwner.avartarUrl">
@@ -106,8 +106,8 @@
 
         </ng-container>
 
-        <ng-template #noCustomers>
-            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no carOwners!
+        <ng-template #noCarOwners>
+            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no car owners!
             </div>
         </ng-template>
 

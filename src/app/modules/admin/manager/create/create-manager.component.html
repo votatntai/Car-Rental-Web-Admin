@@ -19,11 +19,11 @@
                 <mat-form-field class="w-full">
                     <mat-label>Username</mat-label>
                     <input matInput [formControlName]="'username'" />
+                    <mat-error *ngIf="createManagerForm.get('username').invalid && createManagerForm.get('username').touched 
+                    && createManagerForm.get('username').errors?.invalidUsername">
+                        Username must be between 5 and 20 characters, no spaces.
+                    </mat-error>
                 </mat-form-field>
-                <div class="text-red-500" *ngIf="createManagerForm.get('username').invalid && createManagerForm.get('username').touched 
-                && createManagerForm.get('username').errors?.invalidUsername">
-                    Username must be between 5 and 20 characters, no spaces.
-                </div>
             </div>
 
             <!-- Password -->
@@ -31,11 +31,10 @@
                 <mat-form-field class="w-full">
                     <mat-label>Password</mat-label>
                     <input matInput type="password" [formControlName]="'password'" />
+                    <mat-error class="text-red-500" *ngIf="createManagerForm.get('password').invalid && createManagerForm.get('password').touched 
+                        && createManagerForm.get('password').errors?.invalidPassword">
+                        Password must be more than 8 characters, contain capital letters, numbers.</mat-error>
                 </mat-form-field>
-                <div class="text-red-500" *ngIf="createManagerForm.get('password').invalid && createManagerForm.get('password').touched 
-                    && createManagerForm.get('password').errors?.invalidPassword">
-                    Password must be more than 8 characters, contain letters, capital letters, numbers and special
-                    characters. </div>
             </div>
 
             <!-- Confirm -->
@@ -43,11 +42,11 @@
                 <mat-form-field class="w-full">
                     <mat-label>Confirm</mat-label>
                     <input matInput type="password" [formControlName]="'confirmPassword'" />
+                    <mat-error *ngIf="createManagerForm.get('confirmPassword').invalid && createManagerForm.get('confirmPassword').touched 
+                        && createManagerForm.get('confirmPassword').errors?.invalidConfirmPassword">
+                        Password does not match.
+                    </mat-error>
                 </mat-form-field>
-                <div class="text-red-500" *ngIf="createManagerForm.get('confirmPassword').invalid && createManagerForm.get('confirmPassword').touched 
-                    && createManagerForm.get('confirmPassword').errors?.invalidConfirmPassword">
-                    Password does not match.
-                </div>
             </div>
 
             <div class="grid grid-cols-2 gap-3 w-full mb-3">
@@ -73,11 +72,11 @@
                 <mat-form-field class="w-full">
                     <mat-label>Phone</mat-label>
                     <input matInput type="text" [formControlName]="'phone'" />
+                    <mat-error
+                        *ngIf="createManagerForm.get('phone').invalid && createManagerForm.get('phone').touched && createManagerForm.get('phone').errors?.phone">
+                        Please enter a valid phone number.
+                    </mat-error>
                 </mat-form-field>
-                <div class="text-red-500"
-                    *ngIf="createManagerForm.get('phone').invalid && createManagerForm.get('phone').touched && createManagerForm.get('phone').errors?.phone">
-                    Please enter a valid phone number.
-                </div>
             </div>
 
             <div class="flex justify-end">

@@ -8,7 +8,7 @@
             <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
         </div>
         <!-- Title -->
-        <div class="text-4xl font-extrabold tracking-tight">Driver Management</div>
+        <div class="text-4xl font-extrabold tracking-tight">Quản lý tài khoản tài xế</div>
         <!-- Actions -->
         <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4 gap-3">
             <button mat-raised-button [color]="'primary'" (click)="openCreateDriverDialog()">
@@ -17,7 +17,7 @@
             <!-- Search -->
             <mat-form-field class="fuse-mat-dense fuse-mat-rounded min-w-64" [subscriptSizing]="'dynamic'">
                 <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
-                <input matInput [formControl]="searchInputControl" [autocomplete]="'off'" [placeholder]="'Search'">
+                <input matInput [formControl]="searchInputControl" [autocomplete]="'off'" [placeholder]="'Tìm kiếm'">
             </mat-form-field>
         </div>
     </div>
@@ -29,19 +29,19 @@
                 <!-- Header -->
                 <div class="driver-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
                     matSort matSortDisableClear>
-                    <div>Avatar</div>
-                    <div [mat-sort-header]="'name'">Name</div>
+                    <div>Ảnh</div>
+                    <div [mat-sort-header]="'name'">Tên</div>
                     <div class="hidden sm:block">
-                        Gender
+                        Giới tính
                     </div>
                     <div class="hidden sm:block">
-                        Phone
+                        số điện thoại
                     </div>
                     <div class="hidden sm:block">
-                        Address
+                        Địa chỉ
                     </div>
-                    <div class="hidden sm:block">Active</div>
-                    <div class="hidden sm:block">Action</div>
+                    <div class="hidden sm:block">Trạng thái</div>
+                    <div class="hidden sm:block">Chi tiết</div>
                 </div>
                 <!-- Rows -->
                 <ng-container *ngIf="drivers.length > 0; else noDrivers">
@@ -124,7 +124,8 @@
         </ng-container>
 
         <ng-template #noDrivers>
-            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no drivers!
+            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">Không tìm thấy tài khoản
+                nào!
             </div>
         </ng-template>
 

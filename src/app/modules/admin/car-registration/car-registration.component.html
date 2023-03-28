@@ -8,7 +8,7 @@
             <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
         </div>
         <!-- Title -->
-        <div class="text-4xl font-extrabold tracking-tight">Car Registration Management</div>
+        <div class="text-4xl font-extrabold tracking-tight">Quản lý phiếu đăng ký xe</div>
         <!-- Actions -->
         <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4 gap-3">
             <!-- <button mat-raised-button [color]="'primary'" (click)="openCreateMachineDialog()">
@@ -17,7 +17,7 @@
             <!-- Search -->
             <mat-form-field class="fuse-mat-dense fuse-mat-rounded min-w-64" [subscriptSizing]="'dynamic'">
                 <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
-                <input matInput [formControl]="searchInputControl" [autocomplete]="'off'" [placeholder]="'Search'">
+                <input matInput [formControl]="searchInputControl" [autocomplete]="'off'" [placeholder]="'Tìm kiếm'">
             </mat-form-field>
         </div>
     </div>
@@ -29,20 +29,20 @@
                 <!-- Header -->
                 <div class="car-registration-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
                     matSort matSortDisableClear>
-                    <div>Thumb</div>
-                    <div [mat-sort-header]="'name'">Name</div>
+                    <div>Ảnh</div>
+                    <div [mat-sort-header]="'name'">Tên</div>
                     <div class="hidden sm:block">
-                        License Plate
+                        Biển số
                     </div>
                     <div class="hidden sm:block">
-                        Price
+                        Giá
                     </div>
                     <div class="hidden sm:block">
-                        Production Company
+                        Hãng
                     </div>
-                    <div class="hidden sm:block">Location</div>
-                    <div class="hidden sm:block">Request At</div>
-                    <div class="hidden sm:block">Action</div>
+                    <div class="hidden sm:block">Địa chỉ</div>
+                    <div class="hidden sm:block">Thời gian</div>
+                    <div class="hidden sm:block">Chi tiết</div>
                 </div>
                 <!-- Rows -->
                 <ng-container *ngIf="carRegistrations.length > 0; else noMachines">
@@ -119,8 +119,8 @@
         </ng-container>
 
         <ng-template #noMachines>
-            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no
-                carRegistrations!
+            <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">Không tìm thấy phiếu
+                đăng ký nào!
             </div>
         </ng-template>
 

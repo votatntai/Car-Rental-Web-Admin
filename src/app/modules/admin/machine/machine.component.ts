@@ -3,7 +3,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { debounceTime, map, merge, Observable, Subject, switchMap, take, takeLast, takeUntil } from 'rxjs';
+import { debounceTime, map, merge, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { MachineService } from './machine.service';
 import { Machine, MachinePagination } from './machine.type';
 

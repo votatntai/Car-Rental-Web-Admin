@@ -12,6 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { Route, RouterModule } from '@angular/router';
 import { FuseAlertModule } from '@fuse/components/alert';
 import { AccountStatusPipeModule } from '@fuse/pipes/status/status-pipe.module';
+import { TimeSpanPipeModule } from '@fuse/pipes/time-span/time-span-pipe.module';
 import { MachineComponent } from 'app/modules/admin/machine/machine.component';
 import { MachineDetailComponent } from './detail/machine-detail.component';
 import { MachineDetailResolver } from './detail/machine-detail.resolvers';
@@ -51,6 +52,7 @@ const machineRoutes: Route[] = [
         MatPaginatorModule,
         MatSortModule,
         AccountStatusPipeModule,
+        TimeSpanPipeModule,
         MatDialogModule,
         MatSelectModule,
         FuseAlertModule

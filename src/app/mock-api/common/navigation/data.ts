@@ -4,340 +4,156 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 export const defaultNavigation: FuseNavigationItem[] = [
     {
         id: 'accounts',
-        title: 'Accounts',
-        subtitle: 'Account Management',
+        title: 'Tài khoản',
+        subtitle: 'Quản lí tài khoản',
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Manager',
+                title: 'Quản lý',
                 type: 'basic',
                 icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Car Owner',
+                title: 'Chủ xe',
                 type: 'basic',
                 icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Drivers',
+                title: 'Tài xế',
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Customers',
+                title: 'Khách hàng',
                 type: 'basic',
                 icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
             },
         ]
     },
-    {
-        id: 'materials',
-        title: 'Materials',
-        subtitle: 'Material Management',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'materials.showroom',
-                title: 'Showroom',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/materials/showrooms'
-            },
-            {
-                id: 'materials.machines',
-                title: 'Machine',
-                type: 'basic',
-                icon: 'heroicons_outline:truck',
-                link: '/materials/machines'
-            },
-            {
-                id: 'materials.carRegistration',
-                title: 'Registration',
-                type: 'basic',
-                icon: 'heroicons_outline:pencil-alt',
-                link: '/materials/car-registrations'
-            },
-        ]
-    },
-    {
-        id: 'comercials',
-        title: 'Comercials',
-        subtitle: 'Comercial',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'comercials.orders',
-                title: 'Order',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/comercials/orders'
-            },
-        ]
-    }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {
         id: 'accounts',
-        title: 'Accounts',
-        subtitle: 'Account Management',
+        title: 'Tài khoản',
+        subtitle: 'Quản lí tài khoản',
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Manager',
+                title: 'Quản lý',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Car Owner',
+                title: 'Chủ xe',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Drivers',
+                title: 'Tài xế',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Customers',
+                title: 'Khách hàng',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
             },
         ]
     },
-    {
-        id: 'materials',
-        title: 'Materials',
-        subtitle: 'Material Management',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'materials.showroom',
-                title: 'Showroom',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/materials/showrooms'
-            },
-            {
-                id: 'materials.machines',
-                title: 'Machine',
-                type: 'basic',
-                icon: 'heroicons_outline:truck',
-                link: '/materials/machines'
-            },
-            {
-                id: 'materials.carRegistration',
-                title: 'Registration',
-                type: 'basic',
-                icon: 'heroicons_outline:pencil-alt',
-                link: '/materials/car-registrations'
-            },
-        ]
-    },
-    {
-        id: 'comercials',
-        title: 'Comercials',
-        subtitle: 'Comercial',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'comercials.orders',
-                title: 'Order',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/comercials/orders'
-            },
-        ]
-    }
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
     {
         id: 'accounts',
-        title: 'Accounts',
-        subtitle: 'Account Management',
+        title: 'Tài khoản',
+        subtitle: 'Quản lí tài khoản',
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Manager',
+                title: 'Quản lý',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Car Owner',
+                title: 'Chủ xe',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Drivers',
+                title: 'Tài xế',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Customers',
+                title: 'Khách hàng',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
             },
         ]
     },
-    {
-        id: 'materials',
-        title: 'Materials',
-        subtitle: 'Material Management',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'materials.showroom',
-                title: 'Showroom',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/materials/showrooms'
-            },
-            {
-                id: 'materials.machines',
-                title: 'Machine',
-                type: 'basic',
-                icon: 'heroicons_outline:truck',
-                link: '/materials/machines'
-            },
-            {
-                id: 'materials.carRegistration',
-                title: 'Registration',
-                type: 'basic',
-                icon: 'heroicons_outline:pencil-alt',
-                link: '/materials/car-registrations'
-            },
-        ]
-    },
-    {
-        id: 'comercials',
-        title: 'Comercials',
-        subtitle: 'Comercial',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'comercials.orders',
-                title: 'Order',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/comercials/orders'
-            },
-        ]
-    }
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
     {
         id: 'accounts',
-        title: 'Accounts',
-        subtitle: 'Account Management',
+        title: 'Tài khoản',
+        subtitle: 'Quản lí tài khoản',
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Manager',
+                title: 'Quản lý',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Car Owner',
+                title: 'Chủ xe',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Drivers',
+                title: 'Tài xế',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Customers',
+                title: 'Khách hàng',
                 type: 'basic',
-                icon: 'heroicons_outline:clipboard-check',
+                icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
             },
         ]
     },
-    {
-        id: 'materials',
-        title: 'Materials',
-        subtitle: 'Material Management',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'materials.showroom',
-                title: 'Showroom',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/materials/showrooms'
-            },
-            {
-                id: 'materials.machines',
-                title: 'Machine',
-                type: 'basic',
-                icon: 'heroicons_outline:truck',
-                link: '/materials/machines'
-            },
-            {
-                id: 'materials.carRegistration',
-                title: 'Registration',
-                type: 'basic',
-                icon: 'heroicons_outline:pencil-alt',
-                link: '/materials/car-registrations'
-            },
-        ]
-    },
-    {
-        id: 'comercials',
-        title: 'Comercials',
-        subtitle: 'Comercial',
-        type: 'group',
-        icon: 'heroicons_outline:user',
-        children: [
-            {
-                id: 'comercials.orders',
-                title: 'Order',
-                type: 'basic',
-                icon: 'heroicons_outline:library',
-                link: '/comercials/orders'
-            },
-        ]
-    }
 ];

@@ -1,16 +1,15 @@
-<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent">
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden dark:bg-transparent">
 
     <!-- Header -->
-    <div
-        class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8 border-b">
+    <div class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between py-8 px-6 md:px-8">
         <!-- Title -->
-        <div class="text-4xl font-extrabold tracking-tight">Driver Profile</div>
+        <div class="text-4xl font-extrabold tracking-tight">Thông tin tài xế</div>
     </div>
 
     <div class="flex flex-col flex-auto items-center sm:mb-18 overflow-hidden sm:overflow-y-auto">
-        <div class="flex flex-col items-center py-8 bg-card shadow-sm w-full">
+        <div class="flex flex-col items-center px-10 w-full">
             <div class="grid grid-cols-2 w-full gap-8">
-                <div class="col-span-1 flex flex-col items-center justify-between px-8">
+                <div class="col-span-1 flex flex-col items-center justify-between bg-card rounded-lg p-8">
                     <div class="infor">
                         <div class="relative w-24 h-24">
                             <img class="w-full h-full rounded-full" *ngIf="driver.avatarUrl" [src]="driver.avatarUrl"
@@ -41,11 +40,11 @@
                         </ng-container>
                     </div>
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 flex flex-col bg-card rounded-lg p-8">
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:phone"></mat-icon>
                         <span class="font-semibold ">
-                            Phone:
+                            Số điện thoại:
                         </span>
                         <span>
                             {{driver.phone}}
@@ -54,7 +53,7 @@
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:users"></mat-icon>
                         <span class="font-semibold ">
-                            Gender:
+                            Giới tính:
                         </span>
                         <span>
                             {{driver.gender}}
@@ -63,7 +62,7 @@
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:shield-exclamation"></mat-icon>
                         <span class="font-semibold ">
-                            Address:
+                            Địa chỉ:
                         </span>
                         <span>
                             {{driver.address}}
@@ -72,7 +71,7 @@
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:status-online"></mat-icon>
                         <span class="font-semibold ">
-                            Status:
+                            Trạng thái:
                         </span>
                         <span>
                             {{driver.accountStatus | accountStatus}}
@@ -81,7 +80,7 @@
                     <div class="flex justify-items-center gap-3 mb-6">
                         <mat-icon svgIcon="heroicons_outline:identification"></mat-icon>
                         <span class="font-semibold ">
-                            Bank name:
+                            Ngân hàng:
                         </span>
                         <span>
                             {{driver.bankName || "No information"}}
@@ -90,7 +89,7 @@
                     <div class="flex justify-items-center gap-3">
                         <mat-icon svgIcon="heroicons_outline:identification"></mat-icon>
                         <span class="font-semibold ">
-                            Bank account number:
+                            Số tài khoản:
                         </span>
                         <span>
                             {{driver.bankAccountNumber || "No information"}}

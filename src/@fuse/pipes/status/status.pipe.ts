@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AccountStatusPipe implements PipeTransform {
     transform(value: boolean): string {
-        return value ? 'Active' : 'Blocked';
+        return value ? 'Đang hoạt động' : 'Đã bị chặn';
     }
 }

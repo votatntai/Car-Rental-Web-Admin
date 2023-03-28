@@ -14,7 +14,6 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-    console.log('[firebase-messaging-sw.js] Received background message ', payload);
     self.registration.getNotifications().then((notifications) => {
         const notificationTitle = payload.notification.title;
         const notificationOptions = {
@@ -26,7 +25,6 @@ messaging.onBackgroundMessage((payload) => {
 
         // Kiểm tra xem có thông báo nào đang được hiển thị hay không
         if (notifications.some(notification => notification.title === notificationTitle && notification.body === notificationOptions.body)) {
-            console.log('[firebase-messaging-sw.js] A notification with the same title and body is already displayed.');
             return;
         }
 

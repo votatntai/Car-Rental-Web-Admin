@@ -10,7 +10,6 @@ export class DriverService {
     private _drivers: BehaviorSubject<Driver[] | null> = new BehaviorSubject(null);
     private _pagination: BehaviorSubject<DriverPagination | null> = new BehaviorSubject(null);
 
-
     constructor(private _httpClient: HttpClient) { }
 
     /**

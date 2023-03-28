@@ -1,4 +1,4 @@
-<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent">
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden dark:bg-transparent">
 
     <!-- Header -->
     <div
@@ -18,9 +18,9 @@
     </div>
 
     <div class="flex flex-col flex-auto items-center sm:mb-18 overflow-hidden sm:overflow-y-auto">
-        <div class="flex flex-col items-center py-16 bg-card w-full">
-            <div class="grid grid-cols-2 w-full gap-8 ">
-                <div class="col-span-1 flex flex-col items-center justify-between px-8">
+        <div class="flex flex-col items-center py-16 px-10 w-full">
+            <div class="grid grid-cols-2 w-full gap-8">
+                <div class="col-span-1 flex flex-col items-center justify-between p-8  bg-card rounded-lg">
                     <div class="header">
                         <div class="relative w-24 h-24">
                             <img class="w-full h-full rounded-full" *ngIf="carRegistration.carOwner.avatarUrl"
@@ -38,12 +38,18 @@
 
                     <div class="thumb my-8">
                         <div class="image flex gap-3">
-                            <img class="rounded-lg w-24 h-24" src="" alt="">
-                            <img class="rounded-lg w-24 h-24" src="" alt="">
-                            <img class="rounded-lg w-24 h-24" src="" alt="">
-                            <img class="rounded-lg w-24 h-24" src="" alt="">
-                            <img class="rounded-lg w-24 h-24" src="" alt="">
-
+                            <img class="rounded-lg w-24 h-24 object-cover"
+                                src="https://web-assets.cdn.dealersolutions.com.au/modular.multisite.dealer.solutions/wp-content/uploads/2018/03/31104034/GR86-Image.jpg"
+                                alt="">
+                            <img class="rounded-lg w-24 h-24 object-cover"
+                                src="https://web-assets.cdn.dealersolutions.com.au/modular.multisite.dealer.solutions/wp-content/uploads/2018/03/31104034/GR86-Image.jpg"
+                                alt="">
+                            <img class="rounded-lg w-24 h-24 object-cover"
+                                src="https://web-assets.cdn.dealersolutions.com.au/modular.multisite.dealer.solutions/wp-content/uploads/2018/03/31104034/GR86-Image.jpg"
+                                alt="">
+                            <img class="rounded-lg w-24 h-24 object-cover"
+                                src="https://web-assets.cdn.dealersolutions.com.au/modular.multisite.dealer.solutions/wp-content/uploads/2018/03/31104034/GR86-Image.jpg"
+                                alt="">
                         </div>
                     </div>
 
@@ -79,7 +85,7 @@
                         </div>
                         <div class="col-span-1">
                             <div class="flex justify-items-center gap-3 mb-6">
-                                <mat-icon svgIcon="heroicons_outline:clock"></mat-icon>
+                                <mat-icon svgIcon="heroicons_outline:identification"></mat-icon>
                                 <span class="font-semibold ">
                                     Name:
                                 </span>
@@ -88,7 +94,7 @@
                                 </span>
                             </div>
                             <div class="flex justify-items-center gap-3 mb-6">
-                                <mat-icon svgIcon="heroicons_outline:clock"></mat-icon>
+                                <mat-icon svgIcon="heroicons_outline:location-marker"></mat-icon>
                                 <span class="font-semibold ">
                                     Location:
                                 </span>
@@ -109,10 +115,10 @@
                     </div>
                 </div>
 
-                <div class="col-span-1">
+                <div class="col-span-1 p-8 flex flex-col bg-card rounded-lg">
                     <div class="text-xl font-bold mb-3">Calendar</div>
                     <!-- Calendar -->
-                    <mat-table class="mat-elevation-z2" [dataSource]="dataSource">
+                    <mat-table class="mat-elevation-z0 rounded-md" [dataSource]="dataSource">
                         <ng-container matColumnDef="weekday">
                             <mat-header-cell *matHeaderCellDef class="header-cell">Day</mat-header-cell>
                             <mat-cell *matCellDef="let element" class="day-cell ">{{element.weekday}}</mat-cell>
@@ -133,7 +139,7 @@
 
             </div>
         </div>
-        <div class="flex flex-col items-center py-8 bg-card w-full">
+        <div class="flex flex-col items-center py-8 w-full">
             <div class="grid grid-cols-2 w-full gap-8">
                 <div class="col-span-1 flex flex-col items-center justify-between px-8">
 

@@ -35,7 +35,7 @@ export class CarOwnerComponent implements OnInit, AfterViewInit {
     ) { }
 
     ngOnInit() {
-        // Get the products
+        // Get the car owners
         this.carOwners$ = this._carOwnerService.carOwners$;
 
         // Get the pagination

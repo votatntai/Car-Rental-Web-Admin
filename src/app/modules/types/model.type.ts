@@ -12,5 +12,4 @@ export interface Model {
     fuelType: string,
     fuelConsumption: string,
     productionCompany: ProductCompany,
-
 }

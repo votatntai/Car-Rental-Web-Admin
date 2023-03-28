@@ -71,7 +71,7 @@ export class CarOwnerService {
             switchMap(() => this._httpClient.get<CarOwner>('/api/car-owners/' + id).pipe(
                 map((carOwner) => {
 
-                    // Set value for current carOwner
+                    // Set value for current car owner
                     this._carOwner.next(carOwner);
 
                     // Return the new contact

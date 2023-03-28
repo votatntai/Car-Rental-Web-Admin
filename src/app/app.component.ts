@@ -1,40 +1,29 @@
-import { Component } from '@angular/core';
-import { AngularFireMessaging } from '@angular/fire/compat/messaging';
-import { mergeMapTo } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs';
+import { AppService } from './app.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     deviceToken: string;
 
     /**
      * Constructor
      */
-    constructor(private messaging: AngularFireMessaging) {
+    constructor(private _appService: AppService) {
         // Request permission for notification in browser
-        this.requestPermission();
+        this._appService.requestPermission();
         // Listen service worker when new nofification are sent to
-        this.listenServiceWorker();
+        this._appService.listenServiceWorker();
     }
 
-    private requestPermission() {
-        this.messaging.requestPermission
-            .pipe(mergeMapTo(this.messaging.tokenChanges))
-            .subscribe(
-                (token) => {
-                    console.log('Permission granted! Save to the server!', token);
-                },
-                (error) => { console.error(error); },
-            );
+    ngOnInit(): void {
+        this._appService.notifications$.subscribe(notification => {
+        })
     }
 
-    private listenServiceWorker() {
-        navigator.serviceWorker.addEventListener('message', (event) => {
-            console.log('[App] Received message from service worker', event.data);
-        });
-    }
 }

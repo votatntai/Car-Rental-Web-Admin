@@ -68,6 +68,22 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link: '/materials/car-registrations'
             },
         ]
+    },
+    {
+        id: 'comercials',
+        title: 'Comercials',
+        subtitle: 'Comercial',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'comercials.orders',
+                title: 'Order',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/comercials/orders'
+            },
+        ]
     }
 ];
 export const compactNavigation: FuseNavigationItem[] = [
@@ -135,6 +151,22 @@ export const compactNavigation: FuseNavigationItem[] = [
                 type: 'basic',
                 icon: 'heroicons_outline:pencil-alt',
                 link: '/materials/car-registrations'
+            },
+        ]
+    },
+    {
+        id: 'comercials',
+        title: 'Comercials',
+        subtitle: 'Comercial',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'comercials.orders',
+                title: 'Order',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/comercials/orders'
             },
         ]
     }
@@ -206,6 +238,22 @@ export const futuristicNavigation: FuseNavigationItem[] = [
                 link: '/materials/car-registrations'
             },
         ]
+    },
+    {
+        id: 'comercials',
+        title: 'Comercials',
+        subtitle: 'Comercial',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'comercials.orders',
+                title: 'Order',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/comercials/orders'
+            },
+        ]
     }
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
@@ -273,6 +321,22 @@ export const horizontalNavigation: FuseNavigationItem[] = [
                 type: 'basic',
                 icon: 'heroicons_outline:pencil-alt',
                 link: '/materials/car-registrations'
+            },
+        ]
+    },
+    {
+        id: 'comercials',
+        title: 'Comercials',
+        subtitle: 'Comercial',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'comercials.orders',
+                title: 'Order',
+                type: 'basic',
+                icon: 'heroicons_outline:library',
+                link: '/comercials/orders'
             },
         ]
     }

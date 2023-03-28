@@ -100,5 +100,18 @@ export const appRoutes: Route[] = [
             { path: 'machines', loadChildren: () => import('app/modules/admin/machine/machine.module').then(m => m.MachineModule) },
             { path: 'car-registrations', loadChildren: () => import('app/modules/admin/car-registration/car-registration.module').then(m => m.CarRegistrationModule) },
         ]
+    },
+
+    // Comercials routes
+    {
+        path: 'comercials',
+        canMatch: [AuthGuard],
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            { path: 'orders', loadChildren: () => import('app/modules/admin/order/order.module').then(m => m.OrderModule) },
+        ]
     }
 ];

@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { Subject, takeUntil } from 'rxjs';
 import { CarRegistrationService } from '../car-registration.service';
 import { CarRegistration } from '../car-registration.type';
-import { MatTableDataSource } from '@angular/material/table';
-import { Calendar } from 'app/modules/types/calendar.type';
 
 @Component({
     selector: 'app-car-registration-detail',
@@ -53,10 +52,7 @@ export class CarRegistrationDetailComponent implements OnInit {
             endTime: null,
             ...carRegistration.calendars.map(c => c.calendar).find(c => c.weekday === day)
         }));
-        console.log(allDays);
-
         this.dataSource = new MatTableDataSource(allDays);
-
     }
 
 }

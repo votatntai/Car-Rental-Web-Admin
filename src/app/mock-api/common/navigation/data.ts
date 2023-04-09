@@ -11,31 +11,47 @@ export const defaultNavigation: FuseNavigationItem[] = [
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Quản lý',
+                title: 'Quản Lý',
                 type: 'basic',
                 icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Chủ xe',
+                title: 'Chủ Xe',
                 type: 'basic',
                 icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Tài xế',
+                title: 'Tài Xế',
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Khách hàng',
+                title: 'Khách Hàng',
                 type: 'basic',
                 icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
+            },
+        ]
+    },
+    {
+        id: 'apps',
+        title: 'Ứng ụng',
+        subtitle: 'Quản lí ứng dụng',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'apps.customer-licenses',
+                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                type: 'basic',
+                icon: 'mat_outline:airplane_ticket',
+                link: '/apps/customer-licenses'
             },
         ]
     },
@@ -50,31 +66,47 @@ export const compactNavigation: FuseNavigationItem[] = [
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Quản lý',
+                title: 'Quản Lý',
                 type: 'basic',
                 icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Chủ xe',
+                title: 'Chủ Xe',
                 type: 'basic',
                 icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Tài xế',
+                title: 'Tài Xế',
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Khách hàng',
+                title: 'Khách Hàng',
                 type: 'basic',
                 icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
+            },
+        ]
+    },
+    {
+        id: 'apps',
+        title: 'Ứng ụng',
+        subtitle: 'Quản lí ứng dụng',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'apps.customer-licenses',
+                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                type: 'basic',
+                icon: 'mat_outline:airplane_ticket',
+                link: '/apps/customer-licenses'
             },
         ]
     },
@@ -89,31 +121,47 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Quản lý',
+                title: 'Quản Lý',
                 type: 'basic',
                 icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Chủ xe',
+                title: 'Chủ Xe',
                 type: 'basic',
                 icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Tài xế',
+                title: 'Tài Xế',
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Khách hàng',
+                title: 'Khách Hàng',
                 type: 'basic',
                 icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
+            },
+        ]
+    },
+    {
+        id: 'apps',
+        title: 'Ứng ụng',
+        subtitle: 'Quản lí ứng dụng',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'apps.customer-licenses',
+                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                type: 'basic',
+                icon: 'mat_outline:airplane_ticket',
+                link: '/apps/customer-licenses'
             },
         ]
     },
@@ -128,31 +176,47 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         children: [
             {
                 id: 'accounts.managers',
-                title: 'Quản lý',
+                title: 'Quản Lý',
                 type: 'basic',
                 icon: 'heroicons_outline:shield-exclamation',
                 link: '/accounts/managers'
             },
             {
                 id: 'accounts.car-owners',
-                title: 'Chủ xe',
+                title: 'Chủ Xe',
                 type: 'basic',
                 icon: 'heroicons_outline:finger-print',
                 link: '/accounts/car-owners'
             },
             {
                 id: 'accounts.drivers',
-                title: 'Tài xế',
+                title: 'Tài Xế',
                 type: 'basic',
                 icon: 'heroicons_outline:truck',
                 link: '/accounts/drivers'
             },
             {
                 id: 'accounts.customer',
-                title: 'Khách hàng',
+                title: 'Khách Hàng',
                 type: 'basic',
                 icon: 'heroicons_outline:users',
                 link: '/accounts/customers'
+            },
+        ]
+    },
+    {
+        id: 'apps',
+        title: 'Ứng ụng',
+        subtitle: 'Quản lí ứng dụng',
+        type: 'group',
+        icon: 'heroicons_outline:user',
+        children: [
+            {
+                id: 'apps.customer-licenses',
+                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                type: 'basic',
+                icon: 'mat_outline:airplane_ticket',
+                link: '/apps/customer-licenses'
             },
         ]
     },

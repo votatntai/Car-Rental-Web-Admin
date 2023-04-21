@@ -46,12 +46,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
+
             {
-                id: 'apps.customer-licenses',
-                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                id: 'apps.promotions',
+                title: 'Quản Lí Khuyến Mãi',
                 type: 'basic',
                 icon: 'mat_outline:airplane_ticket',
-                link: '/apps/customer-licenses'
+                link: '/apps/promotions'
             },
         ]
     },
@@ -101,12 +102,13 @@ export const compactNavigation: FuseNavigationItem[] = [
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
+
             {
-                id: 'apps.customer-licenses',
-                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                id: 'apps.promotions',
+                title: 'Quản Lí Khuyến Mãi',
                 type: 'basic',
                 icon: 'mat_outline:airplane_ticket',
-                link: '/apps/customer-licenses'
+                link: '/apps/promotions'
             },
         ]
     },
@@ -156,12 +158,13 @@ export const futuristicNavigation: FuseNavigationItem[] = [
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
+
             {
-                id: 'apps.customer-licenses',
-                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                id: 'apps.promotions',
+                title: 'Quản Lí Khuyến Mãi',
                 type: 'basic',
                 icon: 'mat_outline:airplane_ticket',
-                link: '/apps/customer-licenses'
+                link: '/apps/promotions'
             },
         ]
     },
@@ -211,12 +214,13 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         type: 'group',
         icon: 'heroicons_outline:user',
         children: [
+
             {
-                id: 'apps.customer-licenses',
-                title: 'Quản Lí Bằng Lái (Chưa hoàn thành)',
+                id: 'apps.promotions',
+                title: 'Quản Lí Khuyến Mãi',
                 type: 'basic',
                 icon: 'mat_outline:airplane_ticket',
-                link: '/apps/customer-licenses'
+                link: '/apps/promotions'
             },
         ]
     },

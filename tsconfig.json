@@ -17,7 +17,11 @@
         "lib": [
             "ES2022",
             "dom"
-        ]
+        ],
+        "types": [
+            "googlemaps"
+        ],
+        "forceConsistentCasingInFileNames": false,
     },
     "angularCompilerOptions": {
         "enableI18nLegacyMessageIdFormat": false

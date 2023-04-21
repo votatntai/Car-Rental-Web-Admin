@@ -4,50 +4,50 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { fuseAnimations } from '@fuse/animations';
-import { debounceTime, map, merge, Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { CreateDriverComponent } from './create/create-driver.component';
-import { DriverService } from './driver.service';
-import { Driver, DriverPagination } from './driver.type';
-import { UpdateDriverComponent } from './update/update-driver.component';
+import { Observable, Subject, debounceTime, map, merge, switchMap, take, takeUntil } from 'rxjs';
+import { CreatePromotionComponent } from './create/create-promotion.component';
+import { PromotionService } from './promotion.service';
+import { Promotion, PromotionPagination } from './promotion.type';
+import { UpdatePromotionComponent } from './update/update-promotion.component';
 
 @Component({
-    selector: 'app-driver',
-    templateUrl: 'driver.component.html',
-    styleUrls: ['driver.component.css'],
+    selector: 'app-promotion',
+    templateUrl: 'promotion.component.html',
+    styleUrls: ['promotion.component.css'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: fuseAnimations
 })
 
-export class DriverComponent implements OnInit, AfterViewInit {
+export class PromotionComponent implements OnInit, AfterViewInit {
 
     @ViewChild(MatPaginator) private _paginator: MatPaginator;
     @ViewChild(MatSort) private _sort: MatSort;
 
-    drivers$: Observable<Driver[]>;
+    promotions$: Observable<Promotion[]>;
 
     flashMessage: 'success' | 'error' | null = null;
     message: string = null;
     searchInputControl: UntypedFormControl = new UntypedFormControl();
     isLoading: boolean = false;
-    pagination: DriverPagination;
+    pagination: PromotionPagination;
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     constructor(
-        private _driverService: DriverService,
+        private _promotionService: PromotionService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _dialog: MatDialog
     ) { }
 
     ngOnInit() {
         // Get the products
-        this.drivers$ = this._driverService.drivers$;
+        this.promotions$ = this._promotionService.promotions$;
 
         // Get the pagination
-        this._driverService.pagination$
+        this._promotionService.pagination$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((pagination: DriverPagination) => {
+            .subscribe((pagination: PromotionPagination) => {
 
                 // Update the pagination
                 this.pagination = pagination;
@@ -72,10 +72,12 @@ export class DriverComponent implements OnInit, AfterViewInit {
                 disableClear: true
             });
 
+            this._paginator._intl.itemsPerPageLabel = "Số dòng mỗi trang";
+
             // Detect changes
             this._changeDetectorRef.detectChanges();
 
-            // If the user changes the sort order...
+            // If the user changes the sort promotion...
             this._sort.sortChange
                 .pipe(takeUntil(this._unsubscribeAll))
                 .subscribe(() => {
@@ -87,7 +89,7 @@ export class DriverComponent implements OnInit, AfterViewInit {
             merge(this._sort.sortChange, this._paginator.page).pipe(
                 switchMap(() => {
                     this.isLoading = true;
-                    return this._driverService.getDrivers(this._paginator.pageIndex, this._paginator.pageSize, this._sort.active, this._sort.direction, this.searchInputControl.value);
+                    return this._promotionService.getPromotions(this._paginator.pageIndex, this._paginator.pageSize, this._sort.active, this._sort.direction, this.searchInputControl.value);
                 }),
                 map(() => {
                     this.isLoading = false;
@@ -104,7 +106,7 @@ export class DriverComponent implements OnInit, AfterViewInit {
                 debounceTime(300),
                 switchMap((query) => {
                     this.isLoading = true;
-                    return this._driverService.getDrivers(0, 10, 'name', 'asc', query);
+                    return this._promotionService.getPromotions(0, 10, 'name', 'asc', query);
                 }),
                 map(() => {
                     this.isLoading = false;
@@ -112,9 +114,9 @@ export class DriverComponent implements OnInit, AfterViewInit {
             ).subscribe();
     }
 
-    openCreateDriverDialog() {
-        this._dialog.open(CreateDriverComponent, {
-            width: '1680px'
+    openCreatePromotionDialog() {
+        this._dialog.open(CreatePromotionComponent, {
+            width: '720px'
         }).afterClosed().subscribe(result => {
             // After dialog closed
             if (result === 'success') {
@@ -125,10 +127,10 @@ export class DriverComponent implements OnInit, AfterViewInit {
         })
     }
 
-    openUpdateDriverDialog(manager: Driver) {
-        this._dialog.open(UpdateDriverComponent, {
+    openUpdatePromotionDialog(data: Promotion) {
+        this._dialog.open(UpdatePromotionComponent, {
             width: '720px',
-            data: manager
+            data: data
         }).afterClosed().subscribe(result => {
             // After dialog closed
             if (result === 'success') {

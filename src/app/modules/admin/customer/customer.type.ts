@@ -1,3 +1,5 @@
+import { Image } from "app/modules/types/image.type";
+
 export interface Customer {
     id: string,
     name: string,
@@ -6,6 +8,7 @@ export interface Customer {
     avatarUrl: string,
     address: string,
     status: boolean,
+    isLicenseValid: boolean,
     bankName: string,
     bankAccountNumber: string,
     wallet: {
@@ -13,6 +16,7 @@ export interface Customer {
         balance: number,
         status: string,
     },
+    images: Image[]
 }
 
 export interface CustomerPagination {

@@ -1,0 +1,68 @@
+<div class="flex flex-col flex-auto -m-6">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 shadow">
+        <span class="font-semibold text-lg">
+            Tạo mã khuyến mãi
+        </span>
+        <button mat-icon-button (click)="matDialogRef.close()" [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+
+    <div class="flex flex-col sm:flex-row flex-auto items-center sm:items-start p-8 pb-6 sm:pb-8">
+
+        <form [formGroup]="createPromotionForm" class="w-full">
+
+            <div class="grid grid-cols-2 gap-3">
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <mat-form-field class="w-full">
+                        <mat-label>Tên mã khuyến mãi</mat-label>
+                        <input matInput [formControlName]="'name'" />
+                    </mat-form-field>
+                </div>
+
+                <div class="mb-3">
+                    <mat-form-field class="w-full">
+                        <mat-label>Thông tin chi tiết</mat-label>
+                        <input matInput type="text" [formControlName]="'description'" />
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 w-full mb-3">
+                <!-- Confirm -->
+                <mat-form-field class="w-full">
+                    <mat-label>Giá trị (10%)</mat-label>
+                    <input matInput type="number" [formControlName]="'discount'" />
+                </mat-form-field>
+
+                <!-- Name -->
+                <!-- <mat-form-field class="w-full">
+                    <mat-label>Ngày hết hạn</mat-label>
+                    <input matInput type="text" [formControlName]="'expiryAt'" />
+                </mat-form-field> -->
+
+                <mat-form-field>
+                    <mat-label>Ngày hết hạn</mat-label>
+                    <input matInput [matDatepicker]="expiryDatePicker" [formControlName]="'expiryAt'">
+                    <mat-datepicker-toggle matSuffix [for]="expiryDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #expiryDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="flex justify-end">
+                <!-- Submit button -->
+                <button mat-raised-button [color]="'primary'" (click)="createPromotion()">
+                    <span>Tạo</span>
+                    <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

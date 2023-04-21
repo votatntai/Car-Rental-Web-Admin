@@ -18,6 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateDriverComponent } from './update/update-driver.component';
 import { FuseAlertModule } from '@fuse/components/alert';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { AgmCoreModule } from '@agm/core';
 
 const driverRoutes: Route[] = [
     {
@@ -57,7 +60,10 @@ const driverRoutes: Route[] = [
         AccountStatusPipeModule,
         MatSelectModule,
         MatDialogModule,
-        FuseAlertModule
+        FuseAlertModule,
+        MatAutocompleteModule,
+        GooglePlaceModule,
+        AgmCoreModule,
     ],
 })
 export class DriverModule {

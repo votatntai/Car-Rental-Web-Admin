@@ -84,10 +84,10 @@ export class CustomerService {
     /**
  * Get customer by id
  */
-    updateCustomerAccountStatus(id: string, status: boolean) {
+    updateCustomer(id: string, data: any) {
         return this.customers$.pipe(
             take(1),
-            switchMap(() => this._httpClient.put<Customer>('/api/customers/' + id, { status: status }).pipe(
+            switchMap(() => this._httpClient.put<Customer>('/api/customers/' + id, data).pipe(
                 map((updatedCustomer) => {
 
                     // Update current customer

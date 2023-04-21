@@ -42,7 +42,15 @@ export class CustomerDetailComponent implements OnInit {
     updateCustomerStatus(id: string, status: boolean) {
         this._fuseConfirmationService.open().afterClosed().subscribe(result => {
             if (result === 'confirmed') {
-                this._customerService.updateCustomerAccountStatus(id, status).subscribe();
+                this._customerService.updateCustomer(id, { status: status }).subscribe();
+            }
+        })
+    }
+
+    confirmLicense() {
+        this._fuseConfirmationService.open().afterClosed().subscribe(result => {
+            if (result === 'confirmed') {
+                this._customerService.updateCustomer(this.customer.id, { isLicenseValid: true }).subscribe();
             }
         })
     }

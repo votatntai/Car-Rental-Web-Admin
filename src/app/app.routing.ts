@@ -104,14 +104,14 @@ export const appRoutes: Route[] = [
 
     // Comercials routes
     {
-        path: 'comercials',
+        path: 'apps',
         canMatch: [AuthGuard],
         component: LayoutComponent,
         resolve: {
             initialData: InitialDataResolver,
         },
         children: [
-            { path: 'orders', loadChildren: () => import('app/modules/admin/order/order.module').then(m => m.OrderModule) },
+            { path: 'promotions', loadChildren: () => import('app/modules/model/promotion.module').then(m => m.PromotionModule) },
         ]
     }
 ];

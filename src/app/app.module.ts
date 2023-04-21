@@ -14,6 +14,7 @@ import { CoreModule } from 'app/core/core.module';
 import { mockApiServices } from 'app/mock-api';
 import { environment } from '../environments/environment';
 import { LayoutModule } from './layout/layout.module';
+import { AgmCoreModule } from '@agm/core';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy: PreloadAllModules,
@@ -42,6 +43,10 @@ const routerConfig: ExtraOptions = {
 
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireMessagingModule,
+        AgmCoreModule.forRoot({
+            apiKey: environment.googleMapsApiKey,
+            libraries: ['places'],
+        })
     ],
     bootstrap: [
         AppComponent

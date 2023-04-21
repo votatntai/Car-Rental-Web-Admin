@@ -3,7 +3,7 @@
     <!-- Header -->
     <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 shadow">
         <span class="font-semibold text-lg">
-            Create driver
+            Tạo tài khoản cho tài xế
         </span>
         <button mat-icon-button (click)="matDialogRef.close()" [tabIndex]="-1">
             <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
@@ -14,90 +14,112 @@
 
         <form [formGroup]="createDriverForm" class="w-full">
 
-            <!-- Username -->
-            <div class="mb-3">
-                <mat-form-field class="w-full">
-                    <mat-label>Username</mat-label>
-                    <input matInput [formControlName]="'username'" />
-                    <mat-error *ngIf="createDriverForm.get('username').invalid && createDriverForm.get('username').touched 
-                    && createDriverForm.get('username').errors?.invalidUsername">
-                        Username must be between 5 and 20 characters, no spaces.
-                    </mat-error>
-                </mat-form-field>
-            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="w-full">
+                    <div class="grid grid-cols-3 gap-3">
 
-            <!-- Password -->
-            <div class="mb-3">
-                <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
-                    <input matInput type="password" [formControlName]="'password'" />
-                    <mat-error *ngIf="createDriverForm.get('password').invalid && createDriverForm.get('password').touched 
-                        && createDriverForm.get('password').errors?.invalidPassword">
-                        Password must be more than 8 characters, contain capital letters, numbers.</mat-error>
-                </mat-form-field>
-            </div>
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <mat-form-field class="w-full">
+                                <mat-label>Tên đăng nhập</mat-label>
+                                <input matInput [formControlName]="'username'" />
+                                <mat-error *ngIf="createDriverForm.get('username').invalid && createDriverForm.get('username').touched 
+                            && createDriverForm.get('username').errors?.invalidUsername">
+                                    Tên tài khoản từ 5-20 ký tự và không chứa khoảng cách
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
 
-            <!-- Confirm -->
-            <div class="mb-3">
-                <mat-form-field class="w-full">
-                    <mat-label>Confirm</mat-label>
-                    <input matInput type="password" [formControlName]="'confirmPassword'" />
-                    <mat-error class="text-red-500" *ngIf="createDriverForm.get('confirmPassword').invalid && createDriverForm.get('confirmPassword').touched 
-                    && createDriverForm.get('confirmPassword').errors?.invalidConfirmPassword">
-                        Password does not match.
-                    </mat-error>
-                </mat-form-field>
-            </div>
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <mat-form-field class="w-full">
+                                <mat-label>Mật khẩu</mat-label>
+                                <input matInput type="password" [formControlName]="'password'" />
+                                <mat-error *ngIf="createDriverForm.get('password').invalid && createDriverForm.get('password').touched 
+                                && createDriverForm.get('password').errors?.invalidPassword">
+                                    Vui lòng nhập mật khẩu mạnh hơn 'Abc123!@#'.</mat-error>
+                            </mat-form-field>
+                        </div>
 
-            <div class="grid grid-cols-2 gap-3 w-full mb-3">
-                <!-- Name -->
-                <mat-form-field class="w-full">
-                    <mat-label>Name</mat-label>
-                    <input matInput type="text" [formControlName]="'name'" />
-                </mat-form-field>
+                        <!-- Confirm -->
+                        <div class="mb-3">
+                            <mat-form-field class="w-full">
+                                <mat-label>Xác nhận mật khẩu</mat-label>
+                                <input matInput type="password" [formControlName]="'confirmPassword'" />
+                                <mat-error class="text-red-500" *ngIf="createDriverForm.get('confirmPassword').invalid && createDriverForm.get('confirmPassword').touched 
+                            && createDriverForm.get('confirmPassword').errors?.invalidConfirmPassword">
+                                    Mật khẩu không khớp
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
 
-                <!-- Gender -->
-                <mat-form-field class="w-full">
-                    <mat-label>Gender</mat-label>
-                    <mat-select (selectionChange)="onGenderChange($event.value)">
-                        <mat-option value="Nam">Nam</mat-option>
-                        <mat-option value="Nữ">Nữ</mat-option>
-                        <mat-option value="Khác">Khác</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+                    <div class="grid grid-cols-2 gap-3 w-full mb-3">
+                        <!-- Name -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Tên</mat-label>
+                            <input matInput type="text" [formControlName]="'name'" />
+                        </mat-form-field>
 
-            <!-- Address -->
-            <mat-form-field class="w-full mb-3">
-                <mat-label>Address</mat-label>
-                <input matInput type="text" [formControlName]="'address'" />
-            </mat-form-field>
+                        <!-- Gender -->
+                        <mat-form-field class="w-full">
+                            <mat-label>Giới tính</mat-label>
+                            <mat-select (selectionChange)="onGenderChange($event.value)">
+                                <mat-option value="Nam">Nam</mat-option>
+                                <mat-option value="Nữ">Nữ</mat-option>
+                                <mat-option value="Khác">Khác</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
 
-            <div class="grid grid-cols-2 gap-3 w-full mb-3">
-                <!-- Bank name -->
-                <mat-form-field class="w-full">
-                    <mat-label>Bank Name</mat-label>
-                    <input matInput type="text" [formControlName]="'bankName'" />
-                </mat-form-field>
+                    <div class="grid grid-cols-3 gap-3 w-full">
+                        <div class="mb-3">
+                            <!-- Bank name -->
+                            <mat-form-field class="w-full">
+                                <mat-label>Tên ngân hàng</mat-label>
+                                <input matInput type="text" [formControlName]="'bankName'" />
+                            </mat-form-field>
+                        </div>
 
-                <!-- Bank account number -->
-                <mat-form-field class="w-full">
-                    <mat-label>Bank Account Number</mat-label>
-                    <input matInput type="text" [formControlName]="'bankAccountNumber'" />
-                </mat-form-field>
-            </div>
+                        <div class="mb-3">
+                            <!-- Bank account number -->
+                            <mat-form-field class="w-full">
+                                <mat-label>Số tài khoản</mat-label>
+                                <input matInput type="text" [formControlName]="'bankAccountNumber'" />
+                            </mat-form-field>
+                        </div>
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <mat-form-field class="w-full">
+                                <mat-label>Số điện thoại</mat-label>
+                                <input matInput type="text" [formControlName]="'phone'" />
+                                <mat-error class="text-red-500"
+                                    *ngIf="createDriverForm.get('phone').invalid && createDriverForm.get('phone').touched && createDriverForm.get('phone').errors?.phone">
+                                    Vui lòng nhập đúng số điện thoại của Việt Nam
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- Address -->
+                    <mat-form-field class="w-full mb-3">
+                        <mat-label>Địa chỉ</mat-label>
+                        <input matInput type="text" [formControlName]="'address'" />
+                    </mat-form-field>
+                </div>
 
+                <div>
+                    <mat-form-field class="w-full">
+                        <mat-label>Khu vực làm việc mong muốn</mat-label>
+                        <input matInput ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                            (onAddressChange)="handleAddressChange($event)" placeholder="Tìm kiếm địa chỉ" />
+                    </mat-form-field>
 
-            <!-- Phone -->
-            <div class="mb-3">
-                <mat-form-field class="w-full">
-                    <mat-label>Phone</mat-label>
-                    <input matInput type="text" [formControlName]="'phone'" />
-                    <mat-error class="text-red-500"
-                        *ngIf="createDriverForm.get('phone').invalid && createDriverForm.get('phone').touched && createDriverForm.get('phone').errors?.phone">
-                        Please enter a valid phone number.
-                    </mat-error>
-                </mat-form-field>
+                    <agm-map class="w-full h-80" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"
+                        (mapClick)="mapClicked($event)">
+                        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                    </agm-map>
+
+                </div>
             </div>
 
             <div class="flex justify-end">

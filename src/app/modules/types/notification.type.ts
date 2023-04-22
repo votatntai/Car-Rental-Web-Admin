@@ -2,8 +2,14 @@ export interface Notification {
     id: string,
     title: string,
     body: string,
+    data: NotificationData
+}
+
+export interface NotificationData {
     isRead: boolean,
     createAt: string,
+    type: 'Order' | 'CustomerLicense' | 'None',
+    link: string,
 }
 
 export interface NotificationPagination {

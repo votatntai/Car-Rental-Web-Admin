@@ -175,4 +175,23 @@ export class AuthService {
         // If the access token exists and it didn't expire, sign in using it
         return this.signInUsingToken();
     }
+
+    /**
+* Register device token for notification
+*/
+    registerDeviceToken(deviceToken: string): Observable<boolean> {
+        // Sign in using the token
+        return this._httpClient.post('/api/device-tokens', {
+            deviceToken: deviceToken
+        }).pipe(
+            catchError(() =>
+                // Return false
+                of(false)
+            ),
+            switchMap((response: boolean) => {
+                // Return true
+                return of(response);
+            })
+        );
+    }
 }

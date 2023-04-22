@@ -42,6 +42,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+
         // Subscribe to notification changes
         this._appService.notifications$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -80,6 +81,9 @@ export class NotificationsComponent implements OnInit, OnDestroy {
      * Open the notifications panel
      */
     openPanel(): void {
+
+        this._appService.getNotifications().subscribe();
+
         // Return if the notifications panel or its origin is not defined
         if (!this._notificationsPanel || !this._notificationsOrigin) {
             return;
@@ -106,7 +110,13 @@ export class NotificationsComponent implements OnInit, OnDestroy {
      */
     markAllAsRead(): void {
         // Mark all as read
-        // this._notificationsService.markAllAsRead().subscribe();
+        this._appService.markAllAsRead().subscribe(() => {
+            this.notifications.forEach(notification => {
+                notification.data.isRead = true
+            });
+            this.unreadCount = 0;
+            this._changeDetectorRef.markForCheck();
+        });
     }
 
     /**
@@ -114,7 +124,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
      */
     toggleRead(notification: Notification): void {
         // Toggle the read status
-        notification.isRead = !notification.isRead;
+        notification.data.isRead = !notification.data.isRead;
 
         // Update the notification
         // this._notificationsService.update(notification.id, notification).subscribe();
@@ -125,7 +135,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
      */
     delete(notification: Notification): void {
         // Delete the notification
-        // this._notificationsService.delete(notification.id).subscribe();
+        this._appService.deleteNotification(notification.id).subscribe();
     }
 
     /**
@@ -198,7 +208,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
         let count = 0;
 
         if (this.notifications && this.notifications.length) {
-            count = this.notifications.filter(notification => !notification.isRead).length;
+            count = this.notifications.filter(notification => !notification.data.isRead).length;
         }
 
         this.unreadCount = count;

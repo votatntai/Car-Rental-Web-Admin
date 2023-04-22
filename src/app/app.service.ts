@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/compat/messaging';
-import { BehaviorSubject, mergeMapTo, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, mergeMapTo, Observable, switchMap, take, tap } from 'rxjs';
+import { AuthService } from './core/auth/auth.service';
 import { Notification, NotificationPagination } from './modules/types/notification.type';
 
 @Injectable({ providedIn: 'root' })
@@ -28,6 +29,7 @@ export class AppService {
     constructor(
         private _httpClient: HttpClient,
         private _messaging: AngularFireMessaging,
+        private _authService: AuthService
     ) { }
 
     public requestPermission() {
@@ -35,7 +37,10 @@ export class AppService {
             .pipe(mergeMapTo(this._messaging.tokenChanges))
             .subscribe(
                 (token) => {
-                    console.log('Permission granted! Save to the server!', token);
+                    var accessToken = localStorage.getItem('accessToken');
+                    if (accessToken) {
+                        this._authService.registerDeviceToken(token);
+                    }
                 },
                 (error) => { console.error(error); },
             );
@@ -50,8 +55,12 @@ export class AppService {
                 id: event.messageId,
                 title: event.notification.title,
                 body: event.notification.body,
-                isRead: false,
-                createAt: currentTime
+                data: {
+                    isRead: false,
+                    createAt: currentTime,
+                    type: event.data.type,
+                    link: event.data.link
+                }
             };
 
             var currentNotifications = this._notofications.getValue();
@@ -72,6 +81,32 @@ export class AppService {
                 this._pagination.next(response.pagination);
                 this._notofications.next(response.data);
             }),
+        );
+    }
+
+    public markAllAsRead() {
+        return this._httpClient.put('/api/notifications/make-as-read', null);
+    }
+
+    public deleteNotification(id: string) {
+        return this.notifications$.pipe(
+            take(1),
+            switchMap(notifications => this._httpClient.delete('/api/notifications/' + id).pipe(
+                map((isDeleted: boolean) => {
+
+                    // Find the index of the deleted product
+                    const index = notifications.findIndex(item => item.id === id);
+
+                    // Delete the product
+                    notifications.splice(index, 1);
+
+                    // Update the products
+                    this._notofications.next(notifications);
+
+                    // Return the deleted status
+                    return isDeleted;
+                })
+            ))
         );
     }
 }

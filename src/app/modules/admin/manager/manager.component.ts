@@ -121,7 +121,10 @@ export class ManagerComponent implements OnInit, AfterViewInit {
             // After dialog closed
             if (result === 'success') {
                 this.showFlashMessage(result, 'Tạo mới thành công', 3000);
-            } else {
+            } else if (result === 'error_duplicate') {
+                this.showFlashMessage('error', 'Tên đăng nhập hoặc số điện thoại đã được sử dụng', 3000);
+            }
+            else {
                 this.showFlashMessage(result, 'Đã có lỗi xảy ra', 3000);
             }
         })
@@ -136,7 +139,7 @@ export class ManagerComponent implements OnInit, AfterViewInit {
             if (result === 'success') {
                 this.showFlashMessage(result, 'Cập nhật thành công', 3000);
             } else {
-                this.showFlashMessage(result, 'Đã có lỗi xảy ra', 3000);
+                this.showFlashMessage('error', 'Đã có lỗi xảy ra', 3000);
             }
         })
     }

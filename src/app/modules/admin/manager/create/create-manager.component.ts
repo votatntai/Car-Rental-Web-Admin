@@ -50,6 +50,12 @@ export class CreateManagerComponent implements OnInit {
                 } else {
                     this.matDialogRef.close('error');
                 }
+            }, error => {
+                console.log(error.status);
+
+                if (error.status === 400) {
+                    this.matDialogRef.close('error_duplicate');
+                }
             })
         }
     }

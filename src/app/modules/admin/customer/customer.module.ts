@@ -13,6 +13,7 @@ import { CustomerDetailResolver } from './detail/customer-detail.resolvers';
 import { CustomerComponent } from './customer.component';
 import { CustomersResolver } from './customer.resolvers';
 import { AccountStatusPipeModule } from '@fuse/pipes/status/status-pipe.module';
+import { DenyLicenseComponent } from './detail/deny-license/deny-license.component';
 
 const driverRoutes: Route[] = [
     {
@@ -35,6 +36,7 @@ const driverRoutes: Route[] = [
     declarations: [
         CustomerComponent,
         CustomerDetailComponent,
+        DenyLicenseComponent
     ],
     imports: [
         CommonModule,

@@ -108,10 +108,18 @@
                             </div>
                         </ng-container>
                         <ng-container *ngIf="!customer.isLicenseValid">
-                            <button class="flex gap-2" mat-raised-button [color]="'primary'" (click)="confirmLicense()">
-                                <mat-icon [svgIcon]="'heroicons_outline:check'"></mat-icon>
-                                Chấp nhận
-                            </button>
+                            <div class="flex gap-3">
+                                <button class="flex gap-2" mat-raised-button [color]="'warn'"
+                                    (click)="openDenyLicenseDialog()">
+                                    <mat-icon [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                                    Từ chối
+                                </button>
+                                <button class="flex gap-2" mat-raised-button [color]="'primary'"
+                                    (click)="confirmLicense(true)">
+                                    <mat-icon [svgIcon]="'heroicons_outline:check'"></mat-icon>
+                                    Chấp nhận
+                                </button>
+                            </div>
                         </ng-container>
                     </ng-container>
                 </div>

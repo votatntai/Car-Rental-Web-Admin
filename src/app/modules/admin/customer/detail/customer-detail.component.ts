@@ -4,6 +4,8 @@ import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { Subject, takeUntil } from 'rxjs';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer.type';
+import { MatDialog } from '@angular/material/dialog';
+import { DenyLicenseComponent } from './deny-license/deny-license.component';
 
 @Component({
     selector: 'app-customer-detail',
@@ -23,6 +25,7 @@ export class CustomerDetailComponent implements OnInit {
         private _customerService: CustomerService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseConfirmationService: FuseConfirmationService,
+        private _dialog: MatDialog
     ) { }
 
     ngOnInit() {
@@ -47,12 +50,21 @@ export class CustomerDetailComponent implements OnInit {
         })
     }
 
-    confirmLicense() {
+    confirmLicense(valid: boolean) {
         this._fuseConfirmationService.open().afterClosed().subscribe(result => {
             if (result === 'confirmed') {
-                this._customerService.updateCustomer(this.customer.id, { isLicenseValid: true }).subscribe();
+                this._customerService.updateCustomer(this.customer.id, { isLicenseValid: valid }).subscribe();
             }
         })
+    }
+
+    openDenyLicenseDialog() {
+        this._dialog.open(DenyLicenseComponent, {
+            width: '720px',
+            data: this.customer
+        }).afterClosed().subscribe(() => {
+            this._changeDetectorRef.markForCheck();
+        });
     }
 
 }

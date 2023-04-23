@@ -5,6 +5,7 @@ export interface Promotion {
     discount: number,
     createAt: string,
     expiryAt: string,
+    quantity: number
 }
 
 export interface PromotionPagination {

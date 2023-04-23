@@ -34,6 +34,7 @@ export class UpdatePromotionComponent implements OnInit {
             description: [this.data.description, Validators.required],
             discount: [this.data.discount, Validators.required],
             expiryAt: [this.data.expiryAt, [Validators.required]],
+            quantity: [this.data.quantity, [Validators.required]],
         });
     }
 

@@ -27,6 +27,7 @@ export class CreatePromotionComponent implements OnInit {
             description: ['', [Validators.required]],
             discount: ['', [Validators.required]],
             expiryAt: ['', Validators.required],
+            quantity: ['', Validators.required],
         });
     }
 

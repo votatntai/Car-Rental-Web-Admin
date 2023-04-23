@@ -31,6 +31,7 @@ export class PromotionComponent implements OnInit, AfterViewInit {
     searchInputControl: UntypedFormControl = new UntypedFormControl();
     isLoading: boolean = false;
     pagination: PromotionPagination;
+    today: Date = new Date();
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -149,5 +150,9 @@ export class PromotionComponent implements OnInit, AfterViewInit {
             this.flashMessage = this.message = null;
             this._changeDetectorRef.markForCheck();
         }, time);
+    }
+
+    parseDate(dateString: string): Date {
+        return new Date(Date.parse(dateString));
     }
 }
